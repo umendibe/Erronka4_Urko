@@ -2,13 +2,11 @@
 <html lang="eu">
 
 <head>
-    <title>Produktuak - INDIUSURBIL</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="MUPI taldea">
-    <meta name="description" content="Hau INDIUSURBIL produktuen orrialdea da">
+    <title>IndiUsurbil - Orri Nagusia</title>
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/produktuak.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
@@ -33,63 +31,96 @@
         </nav>
     </header>
 
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1 class="hero-title">Hauek dira gure<br>azken produktuak</h1>
-            <p class="hero-subtitle">Kalitate hoberenak prezio merkeenean!</p>
-            <button class="hero-cta">
-                Ikusi
-            </button>
-        </div>
-    </section>
-
-    <div class="eduki-nagusia">
-        <aside class="alboko-barra">
-            <h2 class="alboko-titulua">Iragazkiak</h2>
-
-            <div class="iragazki-sekzioa">
-                <h3 class="iragazki-sekzioa-titulua">Kategoria</h3>
-                <div class="iragazki-taldea">
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="denakBtn" checked> Denak
-                    </label>
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="kamisetakBtn"> Kamisetak
-                    </label>
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="galtzakBtn"> Galtzak
-                    </label>
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="jertseakBtn"> Jertseak
-                    </label>
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="txaketakBtn"> Txaketak
-                    </label>
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="zapatakBtn"> Zapatak
-                    </label>
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="soinekoakBtn"> Soinekoak
-                    </label>
-                    <label class="iragazki-aukera">
-                        <input type="checkbox" id="zapatilakBtn"> Zapatilak
-                    </label>
+    <main>
+        <section class="hero-slider">
+            <div class="slider-container">
+                <div class="slide active">
+                    <img src="img/orriNagusia3.png" alt="Moda Berria">
+                    <div class="slide-content">
+                        <h1>Moda Euskalduna, Estilo Global</h1>
+                        <p>Aurkitu zure estiloa gure azken kolekzioan</p>
+                        <a href="produktuak.html" class="cta-button">Kolekzioa Ikusi</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/orriNagusia4.png" alt="Udaberriko Kolekzioa">
+                    <div class="slide-content">
+                        <h1>Udaberriko Kolekzioa</h1>
+                        <p>Kolore eta freskagarriak denboraldi honetarako</p>
+                        <a href="produktuak.html" class="cta-button">Orain Erosi</a>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="img/orriNagusia7.png" alt="Estilo Klasikoa">
+                    <div class="slide-content">
+                        <h1>Estilo Klasikoa, Beti Modakoa</h1>
+                        <p>Piezak iraunkortasunarekin diseinatuak</p>
+                        <a href="produktuak.html" class="cta-button">Deskubritu</a>
+                    </div>
                 </div>
             </div>
-        </aside>
-
-        <main class="produktu-eremua">
-            <div class="produktu-goiburua">
-                <h2 id="categoryTitle">Produktu guztiak</h2>
+            <button class="slider-btn prev" aria-label="Aurrekoa">‹</button>
+            <button class="slider-btn next" aria-label="Hurrengoa">›</button>
+            <div class="slider-dots"></div>
+        </section>
+        <section class="produktu-nabarmendua">
+            <h2 class="sekzio-titulua">Gure Produktu Ezagunenak</h2>
+            <div id="produktu-grid" class="produktu-grid"></div>
+            <div class="ikusi-guztiak">
+                <a href="produktuak.html" class="ikusi-guztiak-btn">Produktu Guztiak Ikusi</a>
             </div>
-            <div id="shopContent" class="produktu-sarea"></div>
-        </main>
-    </div>
+        </section>
+
+        <section class="promo-banner">
+            <div class="promo-content">
+                <h2>🚚 Bidalketa Doan 50€-tik Gora!</h2>
+                <p>Erosketak egin eta zure etxean jaso doako bidalketarekin</p>
+                <a href="produktuak.html" class="promo-btn">Orain Erosi</a>
+            </div>
+        </section>
+
+        <section class="abantailak-sekzioa">
+            <h2 class="sekzio-titulua">Zergatik IndiUsurbil?</h2>
+            <div class="abantailak-grid">
+                <div class="abantaila-karta">
+                    <div class="abantaila-ikonoa">🚚</div>
+                    <h3>Bidalketa Doan</h3>
+                    <p>50€-tik gorako erosketetan bidalketa doan Euskal Herrian</p>
+                </div>
+                <div class="abantaila-karta">
+                    <div class="abantaila-ikonoa">♻️</div>
+                    <h3>Moda Jasangarria</h3>
+                    <p>Material ekologikoak eta ekoizpen etikoa</p>
+                </div>
+                <div class="abantaila-karta">
+                    <div class="abantaila-ikonoa">⭐</div>
+                    <h3>Kalitate Bermea</h3>
+                    <p>Produktu guztiak kalitate kontrolarekin</p>
+                </div>
+                <div class="abantaila-karta">
+                    <div class="abantaila-ikonoa">💳</div>
+                    <h3>Ordainketa Segurua</h3>
+                    <p>Ordainketa metodo seguruak eta errazak</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="newsletter-sekzioa">
+            <div class="newsletter-edukia">
+                <h2>Harpidetu Gure Newsletter-era</h2>
+                <p>Lortu %10 deskontua zure lehen erosketarako eta jaso azken berriak</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" placeholder="Zure email helbidea" required>
+                    <button type="submit">Harpidetu</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <div class="footer-edukia">
             <div class="footer-blokea footer-marka">
-                <img src="img/logo.png" alt="IndiUsurbil Logo" class="footer-logo-irudia">
+                <img src="img/logo.png" alt="IndiUsurbileko Logoa" class="footer-logo-irudia">
                 <p class="footer-lema">Zure modako marka. Kalitate hoberenak prezio merkeenean.</p>
 
                 <div class="footer-sare-sozialak">
@@ -147,7 +178,7 @@
         </div>
 
         <div class="footer-azpikoa">
-            <p>© 2025 IndiUsurbil. Eskubide guztiak erreserbatuak.</p>
+            <p>© 2026 IndiUsurbil. Eskubide guztiak erreserbatuak.</p>
             <div class="footer-legalak">
                 <a href="#pribatasuna">Pribatasun politika</a>
                 <a href="#terminoak">Terminoak eta kondizioak</a>
@@ -157,9 +188,8 @@
     </footer>
 
     <script src="js/saskiaZerbitzua.js"></script>
-    <script src="js/produktuak.js"></script>
+    <script src="js/index.js"></script>
     <script src="js/footer.js"></script>
-
 </body>
 
 </html>

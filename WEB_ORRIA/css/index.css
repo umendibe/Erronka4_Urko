@@ -1,0 +1,492 @@
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.7);
+}
+
+.slide-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.slide-content h1 {
+    font-size: 56px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+.slide-content p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: #E72D31;
+    color: white;
+    padding: 16px 40px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(231, 45, 49, 0.4);
+}
+
+.cta-button:hover {
+    background-color: #c42327;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(231, 45, 49, 0.6);
+}
+
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border: none;
+    font-size: 40px;
+    padding: 15px 20px;
+    cursor: pointer;
+    z-index: 3;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.slider-btn:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.slider-btn.prev {
+    left: 20px;
+}
+
+.slider-btn.next {
+    right: 20px;
+}
+
+.slider-dots {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 3;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: white;
+}
+
+.sekzio-titulua {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 700;
+    margin: 60px 0 40px;
+    color: #1a1a1a;
+}
+
+.kategoriak-sekzioa {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.kategoria-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.kategoria-karta {
+    position: relative;
+    height: 350px;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.kategoria-karta:hover {
+    transform: translateY(-10px);
+}
+
+.kategoria-karta img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.kategoria-karta:hover img {
+    transform: scale(1.1);
+}
+
+.kategoria-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 30px 20px;
+    transition: background 0.3s ease;
+}
+
+.kategoria-karta:hover .kategoria-overlay {
+    background: linear-gradient(to top, rgba(231, 45, 49, 0.9), transparent);
+}
+
+.kategoria-overlay h3 {
+    color: white;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.produktu-nabarmendua {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.produktu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    margin-bottom: 40px;
+}
+
+.produktu-txartela {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.produktu-txartela:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.produktu-irudia-edukiontzia {
+    position: relative;
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background-color: #f8f8f8;
+}
+
+.produktu-irudia {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.produktu-irudia-1 {
+    opacity: 1;
+    z-index: 1;
+}
+
+.produktu-irudia-2 {
+    opacity: 0;
+    z-index: 2;
+}
+
+.produktu-irudia-edukiontzia:hover .produktu-irudia-1 {
+    opacity: 0;
+}
+
+.produktu-irudia-edukiontzia:hover .produktu-irudia-2 {
+    opacity: 1;
+}
+
+.produktu-info {
+    padding: 20px;
+}
+
+.produktu-txartela h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #1a1a1a;
+}
+
+.prezioa {
+    color: #1a1a1a;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.ikusi-guztiak {
+    text-align: center;
+}
+
+.ikusi-guztiak-btn {
+    display: inline-block;
+    padding: 14px 40px;
+    background-color: #1a3a52;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.ikusi-guztiak-btn:hover {
+    background-color: #0f2a3d;
+    transform: translateY(-2px);
+}
+
+.promo-banner {
+    background: linear-gradient(135deg, #E72D31 0%, #c42327 100%);
+    padding: 60px 20px;
+    margin: 60px 0;
+}
+
+.promo-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.promo-content h2 {
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.promo-content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.promo-btn {
+    display: inline-block;
+    background-color: white;
+    color: #E72D31;
+    padding: 14px 35px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+
+.promo-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.abantailak-sekzioa {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.abantailak-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.abantaila-karta {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.abantaila-karta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.abantaila-ikonoa {
+    font-size: 50px;
+    margin-bottom: 20px;
+}
+
+.abantaila-karta h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1a1a1a;
+}
+
+.abantaila-karta p {
+    font-size: 15px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.newsletter-sekzioa {
+    background: linear-gradient(135deg, #1a3a52 0%, #0f2a3d 100%);
+    padding: 80px 20px;
+    margin: 60px 0 0 0;
+}
+
+.newsletter-edukia {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.newsletter-edukia h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.newsletter-edukia p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-form input {
+    flex: 1;
+    padding: 16px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+.newsletter-form button {
+    padding: 16px 30px;
+    background-color: #E72D31;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.newsletter-form button:hover {
+    background-color: #c42327;
+    transform: translateY(-2px);
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .slide-content h1 {
+        font-size: 36px;
+    }
+
+    .slide-content p {
+        font-size: 16px;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 16px;
+    }
+
+    .sekzio-titulua {
+        font-size: 28px;
+    }
+
+    .kategoria-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .kategoria-karta {
+        height: 250px;
+    }
+
+    .promo-content h2 {
+        font-size: 32px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .slider-btn {
+        font-size: 30px;
+        padding: 10px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slider {
+        height: 400px;
+    }
+
+    .slide-content h1 {
+        font-size: 28px;
+    }
+
+    .kategoria-grid {
+        grid-template-columns: 1fr;
+    }
+}

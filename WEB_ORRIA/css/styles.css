@@ -57,3 +57,229 @@ body {
     height: auto;
 
 }
+
+/* --- FOOTER ESTILOAK --- */
+footer {
+    background-color: #3f3f3f;
+    color: #ffffff;
+    margin-top: 80px;
+}
+
+.footer-edukia {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 20px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+/* Footer marka (ezkerreko zatia) */
+.footer-marka {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.footer-logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.footer-logo-irudia {
+    width: 150px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.footer-lema {
+    font-size: 16px;
+    color: #b0b0b0;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Sare sozialak */
+.footer-sare-sozialak {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.sare-sozial-botoia {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2a2a2a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.sare-sozial-botoia:hover {
+    background-color: #E72D31;
+    transform: translateY(-3px);
+}
+
+.sare-sozial-botoia img {
+    width: 20px;
+    height: 20px;
+    filter: brightness(0) invert(1);
+}
+
+/* Footer blokeak */
+.footer-blokea {
+    display: flex;
+    flex-direction: column;
+}
+
+.bloke-titulua {
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-lista {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-lista li a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+.footer-lista li a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+/* Newsletter */
+.footer-newsletter-inprimakia {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.footer-email-sarrera {
+    padding: 12px 15px;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    background-color: #2a2a2a;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.footer-email-sarrera:focus {
+    border-color: #E72D31;
+}
+
+.footer-email-sarrera::placeholder {
+    color: #666;
+}
+
+.footer-bidali-botoia {
+    padding: 12px 20px;
+    background-color: #E72D31;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-bidali-botoia:hover {
+    background-color: #c42327;
+    transform: translateY(-2px);
+}
+
+/* Footer azpikoa (copyright) */
+.footer-azpikoa {
+    border-top: 1px solid #2a2a2a;
+    padding: 25px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-azpikoa p {
+    margin: 0;
+    color: #b0b0b0;
+    font-size: 14px;
+}
+
+.footer-legalak {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.footer-legalak a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.footer-legalak a:hover {
+    color: #ffffff;
+}
+
+#zenbaketa {
+    color: #fffbfb;
+    font-weight: bold;
+    background-color: #000000;
+    border-radius: 40%;
+    padding: 6px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footer-edukia {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer-edukia {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 20px 30px;
+    }
+
+    .footer-azpikoa {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+
+    .footer-legalak {
+        justify-content: center;
+    }
+}
