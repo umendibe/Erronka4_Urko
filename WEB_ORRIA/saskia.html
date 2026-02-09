@@ -3,13 +3,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-sclae=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="IndiUsurbileko Saski orri funtzioanala">
     <meta name="author" content="MUPI Taldea">
+    <title>Saskia - INDIUSURBIL</title>
+
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/saskia.css">
+    <link rel="stylesheet" href="css/footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 
     <script src="js/saskiaZerbitzua.js" defer></script>
     <script src="js/saskia.js" defer></script>
@@ -18,7 +23,6 @@
 <body>
     <header>
         <nav class="nabigazioa">
-
             <div class="logo">
                 <img src="img/logo.png" alt="IndiUsurbileko Logoa">
             </div>
@@ -28,35 +32,129 @@
                 <li><a href="saskia.html">Saskia</a></li>
                 <li><a href="estadistikak.html">Estadistikak</a></li>
                 <li><a href="login.html">Login</a></li>
-
             </ul>
-
             <div class="carritoLogo">
-
-                <a href="saskia.html"><img src="IMG/carro.png" alt="Saskia"><span id="zenbaketa">0</span></a>
+                <a href="saskia.html"><img src="img/carro.png" alt="Saskia"><span id="zenbaketa">0</span></a>
             </div>
         </nav>
-
-
     </header>
+
     <main>
-        <section id="produktuak">
-        </section>
-        <p id="karritoa_hutsik">Karritoa hutsik dago,<a href="./index.html">aukeratu erosi nahi dituzun produktuak</a>
-        </p>
-        <section id="cart-container">
-        </section>
-        <section id="totala">
-            <p>Produktu kantitate totala: <span id="kantitatea">0</span></p>
-            <p>Prezio totala: $<span id="prezioa">0</span></p>
-            <button id="erosiBtn" disabled>Erosi</button>
-            <button id="berrezarri">Berrezarri</button>
-        </section>
+        <div class="saskia-edukia">
+            <!-- Ezkerreko zatia: Produktuak -->
+            <div>
+                <h1 class="saskia-titulua">Zure Saskia</h1>
+
+                <div class="karritoa-hutsik" id="karritoa_hutsik">
+                    <h2>🛒 Saskia hutsik dago</h2>
+                    <p>Oraindik ez duzu produkturik gehitu zure saskira</p>
+                    <a href="produktuak.html">Erosketak egin</a>
+                </div>
+
+                <section id="produktuak"></section>
+            </div>
+
+            <!-- Eskuineko zatia: Laburpena -->
+            <aside class="saskia-laburpena" id="totala">
+                <h2 class="laburpen-titulua">Laburpena</h2>
+
+                <div class="laburpen-lerroa">
+                    <span>Produktuak:</span>
+                    <span id="kantitatea">0</span>
+                </div>
+
+                <div class="laburpen-lerroa">
+                    <span>Bidalketa:</span>
+                    <span>Doan</span>
+                </div>
+
+                <div class="laburpen-lerroa totala">
+                    <span>Guztira:</span>
+                    <span id="prezioa">0.00€</span>
+                </div>
+
+                <button id="erosiBtn" class="erosi-botoia" disabled>Erosi</button>
+                <button id="berrezarri" class="berrezarri-botoia">Berrezarri</button>
+            </aside>
+        </div>
     </main>
+
     <footer>
+        <div class="footer-edukia">
+            <!-- Marka eta Sare Sozialak -->
+            <div class="footer-blokea footer-marka">
+                <img src="img/logo.png" alt="IndiUsurbil Logo" class="footer-logo-irudia">
+                <p class="footer-lema">Zure modako marka. Kalitate hoberenak prezio merkeenean.</p>
 
+                <div class="footer-sare-sozialak">
+                    <a href="#" class="sare-sozial-botoia" aria-label="Instagram">
+                        <img src="img/instagram.png" alt="Instagram">
+                    </a>
+                    <a href="#" class="sare-sozial-botoia" aria-label="Facebook">
+                        <img src="img/facebook.png" alt="Facebook">
+                    </a>
+                    <a href="#" class="sare-sozial-botoia" aria-label="Twitter">
+                        <img src="img/twitter.png" alt="Twitter">
+                    </a>
+                    <a href="#" class="sare-sozial-botoia" aria-label="LinkedIn">
+                        <img src="img/linkedin.png" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
 
+            <!-- Nabigazioa -->
+            <div class="footer-blokea">
+                <h3 class="bloke-titulua">Nabigazioa</h3>
+                <ul class="footer-lista">
+                    <li><a href="index.html">Orri nagusia</a></li>
+                    <li><a href="produktuak.html">Produktuak</a></li>
+                    <li><a href="saskia.html">Saskia</a></li>
+                    <li><a href="estadistikak.html">Estadistikak</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </div>
+
+            <!-- Kategoriak -->
+            <div class="footer-blokea">
+                <h3 class="bloke-titulua">Kategoriak</h3>
+                <ul class="footer-lista">
+                    <li><a href="#kamisetak">Kamisetak</a></li>
+                    <li><a href="#galtzak">Galtzak</a></li>
+                    <li><a href="#jertseak">Jertseak</a></li>
+                    <li><a href="#txaketak">Txaketak</a></li>
+                    <li><a href="#zapatak">Zapatak</a></li>
+                    <li><a href="#soinekoak">Soinekoak</a></li>
+                </ul>
+            </div>
+
+            <!-- Kontaktua eta Newsletter -->
+            <div class="footer-blokea">
+                <h3 class="bloke-titulua">Kontaktua</h3>
+                <ul class="footer-lista">
+                    <li><a href="mailto:info@indiusurbil.eus">info@indiusurbil.eus</a></li>
+                    <li><a href="tel:+34943000000">+34 943 00 00 00</a></li>
+                </ul>
+
+                <h3 class="bloke-titulua" style="margin-top: 25px;">Newsletter</h3>
+                <form class="footer-newsletter-inprimakia">
+                    <input type="email" placeholder="Zure emaila" class="footer-email-sarrera" required>
+                    <button type="submit" class="footer-bidali-botoia">Harpidetu</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="footer-azpikoa">
+            <p>© 2025 IndiUsurbil. Eskubide guztiak erreserbatuak.</p>
+            <div class="footer-legalak">
+                <a href="#pribatasuna">Pribatasun politika</a>
+                <a href="#terminoak">Terminoak eta kondizioak</a>
+                <a href="#cookies">Cookies</a>
+            </div>
+        </div>
     </footer>
+
+    <script src="js/footer.js"></script>
 </body>
 
 </html>
