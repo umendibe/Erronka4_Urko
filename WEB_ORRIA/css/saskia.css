@@ -1,0 +1,263 @@
+/* Saskia orrialde estiloak */
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.saskia-edukia {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 30px;
+    align-items: start;
+}
+
+/* Ezkerreko zatia - Produktuak */
+.saskia-produktuak {
+    background: white;
+}
+
+.saskia-titulua {
+    font-size: 32px;
+    font-weight: 300;
+    margin: 0 0 30px 0;
+    color: #333;
+}
+
+/* Produktu txartela */
+.saskia-produktua {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.saskia-produktua:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.produktu-irudia-saskia {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+}
+
+.produktu-info {
+    flex: 1;
+}
+
+.produktu-izena-saskia {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 5px 0;
+}
+
+.produktu-xehetasunak {
+    font-size: 13px;
+    color: #666;
+    margin: 0;
+}
+
+.produktu-prezioa-saskia {
+    font-size: 18px;
+    font-weight: 700;
+    color: #333;
+    margin-right: 20px;
+}
+
+.kantitate-kontrolak {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.kantitate-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    color: #666;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+.kantitate-btn:hover {
+    color: #E72D31;
+}
+
+.kantitate-zenbakia {
+    font-size: 16px;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+
+.ezabatu-btn {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 20px;
+    transition: color 0.2s;
+}
+
+.ezabatu-btn:hover {
+    color: #E72D31;
+}
+
+/* Eskuineko zatia - Laburpena */
+.saskia-laburpena {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 25px;
+    position: sticky;
+    top: 20px;
+}
+
+.laburpen-titulua {
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+.laburpen-lerroa {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #666;
+}
+
+.laburpen-lerroa.totala {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #e0e0e0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+}
+
+.erosi-botoia {
+    width: 100%;
+    background-color: #1a3a52;
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.erosi-botoia:hover:not(:disabled) {
+    background-color: #0f2a3d;
+}
+
+.erosi-botoia:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.berrezarri-botoia {
+    width: 100%;
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.berrezarri-botoia:hover {
+    border-color: #E72D31;
+    color: #E72D31;
+}
+
+/* Karritoa hutsik mezua */
+.karritoa-hutsik {
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+}
+
+.karritoa-hutsik h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.karritoa-hutsik p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.karritoa-hutsik a {
+    display: inline-block;
+    background-color: #E72D31;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.karritoa-hutsik a:hover {
+    background-color: #c42327;
+}
+
+.izkutatu {
+    display: none !important;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .saskia-edukia {
+        grid-template-columns: 1fr;
+    }
+
+    .saskia-laburpena {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+    .saskia-produktua {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .produktu-irudia-saskia {
+        width: 100%;
+        height: 150px;
+    }
+
+    .saskia-titulua {
+        font-size: 24px;
+    }
+}
