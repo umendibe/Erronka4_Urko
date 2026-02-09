@@ -1,0 +1,59 @@
+body {
+
+    margin: 0;
+    padding: 0;
+}
+
+
+/*Goiko nabigazio menuaren estiloa*/
+
+.nabigazioa {
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f2f2f2;
+
+}
+
+/*Nabigazio menuaren ul-ri lista formatua kentzen*/
+
+.nabigazioa ul {
+
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+/*Nabigazio menuaren ul-ren barruko li-ri estiloa aldatzen*/
+
+.nabigazioa ul li a {
+
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+}
+
+/*Nabigazio menuaren orrien estekei estiloa aldatzen*/
+
+
+
+/*Goiko logoaren estiloa*/
+
+.logo img {
+
+    width: 150px;
+    height: auto;
+
+}
+
+/*Saskiaren logoaren estiloa*/
+
+.carritoLogo img {
+
+    width: 50px;
+    height: auto;
+
+}

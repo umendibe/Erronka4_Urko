@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="eu">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-sclae=1.0">
+    <meta name="description" content="IndiUsurbileko Saski orri funtzioanala">
+    <meta name="author" content="MUPI Taldea">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+    <script src="js/saskiaZerbitzua.js" defer></script>
+    <script src="js/saskia.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <nav class="nabigazioa">
+
+            <div class="logo">
+                <img src="img/logo.png" alt="IndiUsurbileko Logoa">
+            </div>
+            <ul>
+                <li><a href="index.html">Orrialde Nagusia</a></li>
+                <li><a href="produktuak.html">Produktuak</a></li>
+                <li><a href="saskia.html">Saskia</a></li>
+                <li><a href="estadistikak.html">Estadistikak</a></li>
+                <li><a href="login.html">Login</a></li>
+
+            </ul>
+
+            <div class="carritoLogo">
+
+                <a href="saskia.html"><img src="IMG/carro.png" alt="Saskia"><span id="zenbaketa">0</span></a>
+            </div>
+        </nav>
+
+
+    </header>
+    <main>
+        <section id="produktuak">
+        </section>
+        <p id="karritoa_hutsik">Karritoa hutsik dago,<a href="./index.html">aukeratu erosi nahi dituzun produktuak</a>
+        </p>
+        <section id="cart-container">
+        </section>
+        <section id="totala">
+            <p>Produktu kantitate totala: <span id="kantitatea">0</span></p>
+            <p>Prezio totala: $<span id="prezioa">0</span></p>
+            <button id="erosiBtn" disabled>Erosi</button>
+            <button id="berrezarri">Berrezarri</button>
+        </section>
+    </main>
+    <footer>
+
+
+    </footer>
+</body>
+
+</html>
