@@ -4,9 +4,6 @@ body {
     padding: 0;
 }
 
-
-/*Goiko nabigazio menuaren estiloa*/
-
 .nabigazioa {
 
     display: flex;
@@ -16,16 +13,12 @@ body {
 
 }
 
-/*Nabigazio menuaren ul-ri lista formatua kentzen*/
-
 .nabigazioa ul {
 
     list-style: none;
     display: flex;
     gap: 30px;
 }
-
-/*Nabigazio menuaren ul-ren barruko li-ri estiloa aldatzen*/
 
 .nabigazioa ul li a {
 
@@ -36,20 +29,12 @@ body {
     font-size: 20px;
 }
 
-/*Nabigazio menuaren orrien estekei estiloa aldatzen*/
-
-
-
-/*Goiko logoaren estiloa*/
-
 .logo img {
 
     width: 150px;
     height: auto;
 
 }
-
-/*Saskiaren logoaren estiloa*/
 
 .carritoLogo img {
 
@@ -58,7 +43,6 @@ body {
 
 }
 
-/* --- FOOTER ESTILOAK --- */
 footer {
     background-color: #3f3f3f;
     color: #ffffff;
@@ -74,7 +58,6 @@ footer {
     gap: 40px;
 }
 
-/* Footer marka (ezkerreko zatia) */
 .footer-marka {
     display: flex;
     flex-direction: column;
@@ -101,7 +84,6 @@ footer {
     line-height: 1.6;
 }
 
-/* Sare sozialak */
 .footer-sare-sozialak {
     display: flex;
     gap: 15px;
@@ -131,7 +113,6 @@ footer {
     filter: brightness(0) invert(1);
 }
 
-/* Footer blokeak */
 .footer-blokea {
     display: flex;
     flex-direction: column;
@@ -168,7 +149,6 @@ footer {
     padding-left: 5px;
 }
 
-/* Newsletter */
 .footer-newsletter-inprimakia {
     display: flex;
     flex-direction: column;
@@ -214,7 +194,6 @@ footer {
     transform: translateY(-2px);
 }
 
-/* Footer azpikoa (copyright) */
 .footer-azpikoa {
     border-top: 1px solid #2a2a2a;
     padding: 25px 20px;
@@ -258,7 +237,6 @@ footer {
     padding: 6px;
 }
 
-/* Responsive */
 @media (max-width: 1024px) {
     .footer-edukia {
         grid-template-columns: 1fr 1fr;
@@ -284,27 +262,81 @@ footer {
     }
 }
 
-/* Header Responsive */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #333;
+}
+
 @media (max-width: 768px) {
+    .hamburger {
+        display: block;
+        margin-left: 20px;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
     .nabigazioa {
-        flex-direction: column;
-        padding: 20px;
-        gap: 20px;
+        justify-content: space-between;
+        padding: 10px 20px;
+        flex-wrap: wrap;
+        flex-direction: row;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .hamburger {
+        order: 2;
+        margin-left: auto;
+        margin-right: 20px;
+    }
+
+    .carritoLogo {
+        order: 3;
+        margin-top: 0;
     }
 
     .nabigazioa ul {
+        display: none;
         flex-direction: column;
         width: 100%;
         text-align: center;
         gap: 15px;
-        padding: 0;
+        padding: 20px 0;
+        order: 4;
+        background-color: #f2f2f2;
+    }
+
+    .nabigazioa ul.active {
+        display: flex;
     }
 
     .nabigazioa ul li a {
         font-size: 18px;
         display: block;
         padding: 10px;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #ddd;
     }
 
     .nabigazioa ul li:last-child a {
@@ -312,10 +344,6 @@ footer {
     }
 
     .logo img {
-        width: 120px;
-    }
-
-    .carritoLogo {
-        margin-top: 10px;
+        width: 100px;
     }
 }
