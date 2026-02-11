@@ -1,51 +1,102 @@
 body {
     background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
 .login_atala {
     background-color: white;
     display: flex;
-    justify-content: center;
-    margin-left: 125px;
-    margin-top: 125px;
-    width: 80%;
-    height: 600px;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 600px;
     border-radius: 12px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    flex-wrap: wrap;
+    gap: 40px;
 }
 
 section h2 {
     text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-size: 1.8rem;
 }
 
-.sartu {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    margin-right: 140px;
-
-}
-
+.sartu,
 .izena_eman {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    flex: 1;
+    min-width: 300px;
+    max-width: 450px;
 }
 
 input {
-    margin-bottom: 50px;
-    height: 30px;
+    margin-bottom: 20px;
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: #000;
 }
 
 .bidali {
-    height: 30px;
-    width: 50%;
-    margin-left: 25%;
-    border-radius: 20px;
-    background: #000000;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(1, 0, 56, 1) 0%);
+    height: 45px;
+    width: 100%;
+    margin: 10px 0 0 0;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #000000 0%, #010038 100%);
     color: white;
     font-weight: bold;
     cursor: pointer;
+    border: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 1rem;
 }
 
+.bidali:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
 
+@media (max-width: 768px) {
+    .login_atala {
+        flex-direction: column;
+        height: auto;
+        padding: 30px 20px;
+    }
+
+    .sartu {
+        margin-right: 0;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .sartu,
+    .izena_eman {
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+    }
+}
