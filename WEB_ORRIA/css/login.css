@@ -1,0 +1,51 @@
+body {
+    background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%);
+}
+
+.login_atala {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    margin-left: 125px;
+    margin-top: 125px;
+    width: 80%;
+    height: 600px;
+    border-radius: 12px;
+}
+
+section h2 {
+    text-align: center;
+}
+
+.sartu {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    margin-right: 140px;
+
+}
+
+.izena_eman {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+}
+
+input {
+    margin-bottom: 50px;
+    height: 30px;
+}
+
+.bidali {
+    height: 30px;
+    width: 50%;
+    margin-left: 25%;
+    border-radius: 20px;
+    background: #000000;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(1, 0, 56, 1) 0%);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
