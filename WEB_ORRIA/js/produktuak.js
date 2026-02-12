@@ -28,16 +28,6 @@ async function kargaProduktuak() {
         bistaratuProduktuak(produktuGuztiak);
     } catch (errorea) {
         console.error('Errorea produktuak kargatzean:', errorea);
-        const edukiontzia = document.getElementById('shopContent');
-        if (edukiontzia) {
-            edukiontzia.innerHTML = `
-                <div style="grid-column: 1/-1; padding: 20px; background: #ffebee; border-radius: 8px; color: #c62828;">
-                    <h3>Errorea produktuak kargatzean</h3>
-                    <p><strong>Errorea:</strong> ${errorea.message}</p>
-                    <p>Live Server berrabiarazi behar duzu</p>
-                </div>
-            `;
-        }
     }
 }
 
