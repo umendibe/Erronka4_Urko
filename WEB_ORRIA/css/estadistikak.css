@@ -1,0 +1,196 @@
+.estatistikak-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.estatistikak-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.estatistikak-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background-color: #E72D31;
+    border-radius: 2px;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.card h3 {
+    margin-top: 0;
+    color: #444;
+    border-bottom: 2px solid #f2f2f2;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+}
+
+.irabaziak-totala {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #ffffff 0%, #f9f9f9 100%);
+    text-align: center;
+    border-left: 5px solid #28a745;
+}
+
+.irabaziak-totala .datua-handia {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: #28a745;
+    margin: 10px 0;
+}
+
+.irabaziak-totala .azalpena {
+    color: #666;
+    font-size: 1rem;
+}
+
+.stock-baxua {
+    border-left: 5px solid #E72D31;
+}
+
+.subtituloa {
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: -15px;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.lista-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-items li {
+    padding: 12px 0;
+    border-bottom: 1px solid #f4f4f4;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-items li:last-child {
+    border-bottom: none;
+}
+
+.item-balioa.alerta {
+    color: #E72D31;
+    font-weight: bold;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+    color: #888;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.hileko-irabaziak {
+    grid-column: span 1;
+}
+
+@media (min-width: 900px) {
+    .irabaziak-totala {
+        grid-column: 1 / 2;
+    }
+
+    .hileko-irabaziak {
+        grid-column: 2 / -1;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .irabaziak-totala {
+        grid-column: 1 / -1;
+    }
+
+    .hileko-irabaziak {
+        grid-column: span 2;
+    }
+}
+
+.inoiz-erosi-gabeak ul li {
+    color: #666;
+    position: relative;
+    padding-left: 20px;
+}
+
+.inoiz-erosi-gabeak ul li::before {
+    content: '•';
+    color: #999;
+    position: absolute;
+    left: 0;
+    font-size: 1.5em;
+    line-height: 0.8;
+}
+
+
+
+
+@media (max-width: 768px) {
+    .estatistikak-container h1 {
+        font-size: 2rem;
+    }
+
+    .irabaziak-totala .datua-handia {
+        font-size: 2.5rem;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .irabaziak-totala,
+    .hileko-irabaziak {
+        grid-column: auto;
+    }
+}
