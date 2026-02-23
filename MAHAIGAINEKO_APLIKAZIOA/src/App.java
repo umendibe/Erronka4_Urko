@@ -112,6 +112,34 @@ public class App {
     }
 
     public static void fitxategiaIgo() throws IOException {
+        BufferedReader breader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Sartu fitxategiaren ruta lokala: ");
+        String fitxategia = breader.readLine();
+        br = new BufferedReader(new FileReader(fitxategia));
+        try {
+            con = DriverManager.getConnection(DBurl, user, password);
+            String line;
+            pst = con.prepareStatement(
+                    "INSERT INTO Produktuak (ID, izena, deskribapena, prezioa, stock, kategoria) VALUES (?, ?, ?, ?, ?, ?)");
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+                pst.setInt(1, Integer.parseInt(parts[0]));
+                pst.setString(2, parts[1]);
+                pst.setString(3, parts[2]);
+                pst.setDouble(4, Double.parseDouble(parts[3]));
+                pst.setInt(5, Integer.parseInt(parts[4]));
+                pst.setString(6, parts[5]);
+
+                pst.executeUpdate();
+            }
+            br.close();
+            pst.close();
+            con.close();
+
+            System.out.println("Fitxategia ondo igo da!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
