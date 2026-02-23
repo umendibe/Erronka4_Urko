@@ -41,7 +41,7 @@ public class App {
                 break;
 
             case 2:
-
+                fitxategiaIgo();
                 break;
 
             case 3:
@@ -111,7 +111,7 @@ public class App {
         }
     }
 
-    public void fitxategiaIgo() {
+    public static void fitxategiaIgo() throws IOException {
 
     }
 
