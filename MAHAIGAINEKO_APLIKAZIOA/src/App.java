@@ -19,7 +19,7 @@ public class App {
         br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("--AUKERATU--" +
-                "\n 1. Produktuak Gehitu +" +
+                "\n 1. Produktuak Gehitu " +
                 "\n 2. CSV Fitxategia Igo" +
                 "\n 3. Produktuak Egineratu" +
                 "\n 4. Produktuak Zerrendatu" +
@@ -45,7 +45,13 @@ public class App {
                 break;
 
             case 3:
-
+                System.out.println("1. Produktua eguneratu" + "\n 2. Produktua ezabatu");
+                int aukeraEguneratu = Integer.parseInt(br.readLine());
+                if (aukeraEguneratu == 1) {
+                    produktuakEguneratu();
+                } else if (aukeraEguneratu == 2) {
+                    produktuaEzabatu();
+                }
                 break;
 
             case 4:
@@ -143,7 +149,11 @@ public class App {
 
     }
 
-    public void produktuakEguneratu() {
+    public static void produktuakEguneratu() throws IOException {
+
+    }
+
+    public static void produktuaEzabatu() throws IOException {
 
     }
 
