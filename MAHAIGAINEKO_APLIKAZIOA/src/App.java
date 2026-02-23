@@ -150,7 +150,92 @@ public class App {
     }
 
     public static void produktuakEguneratu() throws IOException {
+        System.out.println("Sartu eguneratu nahi duzun produktuaren ID-a: ");
+        Produktuak.ID = Integer.parseInt(br.readLine());
 
+        System.out.println("Zer datu eguneratu nahi duzu? ");
+        System.out.println("1. Izena");
+        System.out.println("2. Deskribapena");
+        System.out.println("3. Prezioa");
+        System.out.println("4. Stock");
+        System.out.println("5. Kategoria");
+        int aukera = Integer.parseInt(br.readLine());
+
+        Connection con = null;
+        PreparedStatement pst = null;
+        ResultSet rs = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBurl, user, password);
+
+            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE ID = ?");
+            pst.setInt(1, Produktuak.ID);
+            rs = pst.executeQuery();
+
+            if (rs.next()) {
+                String izena = rs.getString("izena");
+                String deskribapena = rs.getString("deskribapena");
+                double prezioa = rs.getDouble("prezioa");
+                int stock = rs.getInt("stock");
+                String kategoria = rs.getString("kategoria");
+
+                switch (aukera) {
+                    case 1:
+                        System.out.println("Sartu nahi duzun izena: ");
+                        izena = br.readLine();
+                        break;
+                    case 2:
+                        System.out.println("Sartu nahi duzun deskribapena: ");
+                        deskribapena = br.readLine();
+                        break;
+                    case 3:
+                        System.out.println("Sartu nahi duzun prezioa: ");
+                        prezioa = Double.parseDouble(br.readLine());
+                        break;
+                    case 4:
+                        System.out.println("Sartu nahi duzun stock-a: ");
+                        stock = Integer.parseInt(br.readLine());
+                        break;
+                    case 5:
+                        System.out.println("Sartu nahi duzun kategoria: ");
+                        kategoria = br.readLine();
+                        break;
+                    default:
+                        System.out.println("Ez da aukerarik aurkitu.");
+                        return;
+                }
+
+                pst.close();
+                pst = con.prepareStatement(
+                        "UPDATE Produktuak SET izena = ?, deskribapena = ?, prezioa = ?, stock = ?, kategoria = ? WHERE ID = ?");
+                pst.setString(1, izena);
+                pst.setString(2, deskribapena);
+                pst.setDouble(3, prezioa);
+                pst.setInt(4, stock);
+                pst.setString(5, kategoria);
+                pst.setInt(6, Produktuak.ID);
+                pst.executeUpdate();
+
+                System.out.println("Produktua ondo eguneratu da!");
+            } else {
+                System.out.println("Produktu hau ez da aurkitu.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (rs != null)
+                    rs.close();
+                if (pst != null)
+                    pst.close();
+                if (con != null)
+                    con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public static void produktuaEzabatu() throws IOException {
