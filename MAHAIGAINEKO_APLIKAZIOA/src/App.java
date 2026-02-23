@@ -239,7 +239,32 @@ public class App {
     }
 
     public static void produktuaEzabatu() throws IOException {
+        System.out.println("Sartu ezabatu nahi duzun produktuaren ID-a: ");
+        Produktuak.ID = Integer.parseInt(br.readLine());
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBurl, user, password);
+            pst = con.prepareStatement("DELETE FROM Produktuak WHERE ID = ?");
+            pst.setInt(1, Produktuak.ID);
+            pst.executeUpdate();
+            System.out.println("Produktua ondo ezabatu da!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (pst != null)
+                    pst.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            try {
+                if (con != null)
+                    con.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     public void produktuakZerrednatu() {
