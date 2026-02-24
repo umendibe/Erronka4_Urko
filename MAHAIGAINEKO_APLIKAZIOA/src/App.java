@@ -3,6 +3,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class App {
     static BufferedReader br;
@@ -406,6 +408,10 @@ public class App {
             e.printStackTrace();
         }
         
+
+    }
+
+    public static void informazioaEsportatu() {
 
     }
 }

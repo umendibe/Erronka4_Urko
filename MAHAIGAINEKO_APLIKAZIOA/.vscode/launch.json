@@ -8,7 +8,8 @@
             "mainClass": "App",
             "classPaths": [
                 "$Auto",
-                "${workspaceFolder}/lib/mysql-connector-j-9.6.0.jar"
+                "${workspaceFolder}/lib/mysql-connector-j-9.6.0.jar",
+                "${workspaceFolder}/lib/gson-2.10.1.jar"
             ]
         }
     ]
