@@ -6,13 +6,13 @@ public class Produktuak {
     int stock;
     String kategoria;
     String sorkuntzaData;
-    String irudiaURL;
+    String img;
 
     public Produktuak() {
     }
 
     public Produktuak(int ID, String izena, String deskribapena, double prezioa, int stock, String kategoria,
-            String sorkuntzaData, String irudiaURL) {
+            String sorkuntzaData, String img) {
         this.ID = ID;
         this.izena = izena;
         this.deskribapena = deskribapena;
@@ -20,11 +20,11 @@ public class Produktuak {
         this.stock = stock;
         this.kategoria = kategoria;
         this.sorkuntzaData = sorkuntzaData;
-        this.irudiaURL = irudiaURL;
+        this.img = img;
     }
 
     public void setProdutkua(int prodID, String prodIzena, String prodDeskr, double prodPrezioa, int prodStock,
-            String prodKat, String prodSorkuntzaData, String prodIrudiaURL) {
+            String prodKat, String prodSorkuntzaData, String prodImg) {
         this.ID = prodID;
         this.izena = prodIzena;
         this.deskribapena = prodDeskr;
@@ -32,7 +32,7 @@ public class Produktuak {
         this.stock = prodStock;
         this.kategoria = prodKat;
         this.sorkuntzaData = prodSorkuntzaData;
-        this.irudiaURL = prodIrudiaURL;
+        this.img = prodImg;
     }
 
     public int getIDProduktuak() {
@@ -63,7 +63,7 @@ public class Produktuak {
         return sorkuntzaData;
     }
 
-    public String getProduktuIrudiaURL() {
-        return irudiaURL;
+    public String getProduktuImg() {
+        return img;
     }
 }

@@ -108,7 +108,7 @@ public class App {
         System.out.println("4444 - Galtzak");
         System.out.println("5555 - Zapatillak");
         int kategoria = Integer.parseInt(br.readLine());
-        System.out.println("Sorkuntza-data (yyyy-mm-dd):");
+        System.out.println("Sorkuntza-data (yyyy/mm/dd):");
         String sorkuntzaData = br.readLine();
         System.out.println("Irudiaren URL-a: ");
         String irudiaURL = br.readLine();
@@ -210,7 +210,7 @@ public class App {
                 String deskribapena = rs.getString("deskribapena");
                 double prezioa = rs.getDouble("prezioa");
                 int stock = rs.getInt("stock");
-                int kategoria = rs.getInt("kat_kod");
+                String kategoria = rs.getString("kat_kod");
                 String sorkuntzaData = rs.getString("sorkuntza_data");
                 String irudiaURL = rs.getString("irudia");
 
@@ -233,7 +233,7 @@ public class App {
                         break;
                     case 5:
                         System.out.println("Sartu nahi duzun kategoria: ");
-                        kategoria = Integer.parseInt(br.readLine());
+                        kategoria = br.readLine();
                         break;
                     case 6:
                         System.out.println("Sartu nahi duzun sorkuntza-data: ");
@@ -255,10 +255,10 @@ public class App {
                 pst.setString(2, deskribapena);
                 pst.setDouble(3, prezioa);
                 pst.setInt(4, stock);
-                pst.setInt(5, kategoria);
-                pst.setString(6, sorkuntzaData);
-                pst.setString(7, irudiaURL);
-                pst.setInt(8, ID);
+                pst.setString(5, kategoria);
+                pst.setInt(6, ID);
+                pst.setString(7, sorkuntzaData);
+                pst.setString(8, irudiaURL);
                 pst.executeUpdate();
 
                 System.out.println("Produktua ondo eguneratu da!");
@@ -465,7 +465,7 @@ public class App {
                 produktua.stock = rs.getInt("stock");
                 produktua.kategoria = rs.getString("kat_kod");
                 produktua.sorkuntzaData = rs.getString("sorkuntza_data");
-                produktua.irudiaURL = rs.getString("irudia");
+                produktua.img = rs.getString("irudia");
                 produktuenLista.add(produktua);
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();

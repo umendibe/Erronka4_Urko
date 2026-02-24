@@ -6,7 +6,7 @@ let hautatutakoKategoriak = new Set(['denak']);
 async function kargaProduktuak() {
     console.log('Produktuak kargatzen...');
     try {
-        const erantzuna = await fetch('js/scrypt.json');
+        const erantzuna = await fetch('js/produktuak.json');
         console.log('Fetch erantzuna:', erantzuna.status, erantzuna.statusText);
 
         if (!erantzuna.ok) {
@@ -54,8 +54,7 @@ function bistaratuProduktuak(produktuak) {
 
         txartela.innerHTML = `
             <div class="produktu-irudia-edukiontzia">
-                <img loading="lazy" src="${produktu.img}" alt="${produktu.izena}" class="produktu-irudia produktu-irudia-1">
-                <img loading="lazy" src="${produktu.img2}" alt="${produktu.izena}" class="produktu-irudia produktu-irudia-2">
+                <img loading="lazy" src="${produktu.img}" alt="${produktu.izena}" class="produktu-irudia">
             </div>
             <div class="produktu-info">
                 <h3>${produktu.izena}</h3>

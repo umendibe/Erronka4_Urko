@@ -1,0 +1,22 @@
+[
+  {
+    "ID": 2323,
+    "izena": "Nike Jordan 11",
+    "deskribapena": "Jordan zapatillak",
+    "prezioa": 300.0,
+    "stock": 50,
+    "kategoria": "5555",
+    "sorkuntzaData": "2020-11-30",
+    "img": "https://encrypted-tbn0.gstatic.com/shopping?q\u003dtbn:ANd9GcRoabGgiIBe-o5PBFMMnxnKT_ow8gzeZxY7CWgwASRx8ZTJA0LasUaRN3JUnEo-unYFlF5obcmPfvapYTl2CkEsvQ6_f2G7dJ5x1lBrdoEaRN4EyzGVFWKDGg"
+  },
+  {
+    "ID": 9898,
+    "izena": "Nike air force 1",
+    "deskribapena": "nike zapatillak",
+    "prezioa": 120.0,
+    "stock": 40,
+    "kategoria": "5555",
+    "sorkuntzaData": "2026-02-23",
+    "img": "https://wwww.google.com"
+  }
+]

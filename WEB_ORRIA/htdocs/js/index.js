@@ -39,7 +39,7 @@ document.querySelector('.slider-btn.prev').addEventListener('click', prevSlide);
 
 async function cargarProduktuNabarmendua() {
     try {
-        const response = await fetch('js/scrypt.json');
+        const response = await fetch('js/produktuak.json');
         if (!response.ok) {
             throw new Error('Errorea produktuak kargatzean');
         }
@@ -69,8 +69,7 @@ function bistaratuProduktuNabarmendua(produktuak) {
 
         card.innerHTML = `
             <div class="produktu-irudia-edukiontzia">
-                <img loading="lazy" src="${produktu.img}" alt="${produktu.izena}" class="produktu-irudia produktu-irudia-1">
-                <img loading="lazy" src="${produktu.img2}" alt="${produktu.izena}" class="produktu-irudia produktu-irudia-2">
+                <img loading="lazy" src="${produktu.img}" alt="${produktu.izena}" class="produktu-irudia">
             </div>
             <div class="produktu-info">
                 <h3>${produktu.izena}</h3>
