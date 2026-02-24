@@ -371,13 +371,13 @@ public class App {
 
     public static void produktuakBilatu() throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Sartu bilatu nahi duzun produktuaren ID-a: ");
-        int bilatuID = Integer.parseInt(br.readLine());
+        System.out.println("Sartu bilatu nahi duzun produktuaren Izena: ");
+        String bilatuIzena = br.readLine();
 
         try {
             con = DriverManager.getConnection(DBurl, user, password);
-            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE ID = ?");
-            pst.setInt(1, bilatuID);
+            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE izena = ?");
+            pst.setString(1, bilatuIzena);
             rs = pst.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnCount = rsmd.getColumnCount();
