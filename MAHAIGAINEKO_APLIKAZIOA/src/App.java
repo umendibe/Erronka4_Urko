@@ -21,10 +21,11 @@ public class App {
         System.out.println("--AUKERATU--" +
                 "\n 1. Produktuak Gehitu " +
                 "\n 2. CSV Fitxategia Igo" +
-                "\n 3. Produktuak Egineratu" +
-                "\n 4. Produktuak Zerrendatu" +
-                "\n 5. Produktuak Bilatu" +
-                "\n 6. Programa Amaitu");
+                "\n 3. Produktuak Eguneratu" +
+                "\n 4. Produktuak Ezabatu" +
+                "\n 5. Produktuak Zerrendatu" +
+                "\n 6. Produktuak Bilatu" +
+                "\n 7. Programa Amaitu");
         int aukeraMenu = Integer.parseInt(br.readLine());
 
         switch (aukeraMenu) {
@@ -45,25 +46,31 @@ public class App {
                 break;
 
             case 3:
-                System.out.println("1. Produktua eguneratu" + "\n 2. Produktua ezabatu");
-                int aukeraEguneratu = Integer.parseInt(br.readLine());
-                if (aukeraEguneratu == 1) {
-                    produktuakEguneratu();
-                } else if (aukeraEguneratu == 2) {
-                    produktuaEzabatu();
-                }
+                produktuakEguneratu();
                 break;
 
             case 4:
-
+                produktuaEzabatu();
                 break;
 
             case 5:
-
+                System.out.println("Nola zerrendatu nahi dituzu? ");
+                System.out.println("1. Produktu guztiak ikusi");
+                System.out.println("2. Kategoriaren arabera");
+                int aukeraZerrendatu = Integer.parseInt(br.readLine());
+                if (aukeraZerrendatu == 1) {
+                    produktuakZerrednatu();
+                } else if (aukeraZerrendatu == 2) {
+                    produktuakZerrendatuKategoria();
+                }
                 break;
 
             case 6:
 
+                break;
+
+            case 7:
+                System.out.println("PROGRAMA ITXI DUZU.");
                 break;
 
             default:
@@ -267,7 +274,98 @@ public class App {
         }
     }
 
-    public void produktuakZerrednatu() {
+    public static void produktuakZerrednatu() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBurl, user, password);
+            st = con.createStatement();
+            rs = st.executeQuery("SELECT * FROM Produktuak");
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            boolean daturikDago = false;
+
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.print(rsmd.getColumnName(i).toUpperCase() + " ");
+            }
+            System.out.println();
+            while (rs.next()) {
+                daturikDago = true;
+                for (int i = 1; i <= columnCount; i++) {
+                    System.out.print(rs.getString(i) + ", ");
+                }
+                System.out.println();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void produktuakZerrendatuKategoria() throws IOException {
+        br = new BufferedReader(new InputStreamReader(System.in));
+
+        System.out.println("Sartu nahi duzun kategoria: ");
+        System.out.println("1. Zapatillak");
+        System.out.println("2. Sudaderak");
+        System.out.println("3. Kamisetak");
+        System.out.println("4. Alkandorak");
+        System.out.println("5. Galtzak");
+        int aukeraKategoria = Integer.parseInt(br.readLine());
+
+        String kategoriaNizena;
+        switch (aukeraKategoria) {
+            case 1:
+                kategoriaNizena = "Zapatillak";
+                break;
+            case 2:
+                kategoriaNizena = "Sudaderak";
+                break;
+            case 3:
+                kategoriaNizena = "Kamisetak";
+                break;
+            case 4:
+                kategoriaNizena = "Alkandorak";
+                break;
+            case 5:
+                kategoriaNizena = "Galtzak";
+                break;
+            default:
+                System.out.println("Aukera baliogabea.");
+                return;
+        }
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(DBurl, user, password);
+            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE kategoria = ?");
+            pst.setString(1, kategoriaNizena);
+            rs = pst.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+
+            System.out.println("\n--- " + kategoriaNizena.toUpperCase() + " ---");
+
+            boolean daturikDago = false;
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.print(rsmd.getColumnName(i).toUpperCase() + " ");
+            }
+            System.out.println();
+            while (rs.next()) {
+                daturikDago = true;
+                for (int i = 1; i <= columnCount; i++) {
+                    System.out.print(rs.getString(i) + ", ");
+                }
+                System.out.println();
+            }
+
+            if (!daturikDago) {
+                System.out.println("Ez dago produkturik kategoria honetan.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
