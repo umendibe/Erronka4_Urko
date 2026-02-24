@@ -1,0 +1,5 @@
+{
+    "java.project.referencedLibraries": [
+        "MAHAIGAINEKO_APLIKAZIOA/lib/**/*.jar"
+    ]
+}

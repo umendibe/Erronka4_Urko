@@ -7,10 +7,11 @@
             "request": "launch",
             "mainClass": "App",
             "classPaths": [
-                "$Auto",
+                "${workspaceFolder}/bin",
                 "${workspaceFolder}/lib/mysql-connector-j-9.6.0.jar",
                 "${workspaceFolder}/lib/gson-2.10.1.jar"
-            ]
+            ],
+            "vmArgs": "-cp \"${workspaceFolder}/bin;${workspaceFolder}/lib/mysql-connector-j-9.6.0.jar;${workspaceFolder}/lib/gson-2.10.1.jar\""
         }
     ]
 }

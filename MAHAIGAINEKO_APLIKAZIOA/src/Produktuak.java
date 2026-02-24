@@ -1,29 +1,31 @@
-import java.sql.Struct;
-
 public class Produktuak {
-    static int ID;
-    static String izena;
-    static String deskribapena;
-    static double prezioa;
-    static int stock;
-    static String kategoria;
+    int ID;
+    String izena;
+    String deskribapena;
+    double prezioa;
+    int stock;
+    String kategoria;
 
-    public Produktuak(int ID, String izena, String deskribapena, double prezioa, int stock, String kategoria) {
-        ID = this.ID;
-        izena = this.izena;
-        deskribapena = this.deskribapena;
-        prezioa = this.prezioa;
-        stock = this.stock;
-        kategoria = this.kategoria;
+    public Produktuak() {
     }
 
-    public void setProdutkua(int prodID, String prodIzena, String prodDeskr, double prodPrezioa, int prodStock, String prodKat) {
-        prodID = ID;
-        prodIzena = izena;
-        prodDeskr = deskribapena;
-        prodPrezioa = prezioa;
-        prodStock = stock;
-        prodKat = kategoria;
+    public Produktuak(int ID, String izena, String deskribapena, double prezioa, int stock, String kategoria) {
+        this.ID = ID;
+        this.izena = izena;
+        this.deskribapena = deskribapena;
+        this.prezioa = prezioa;
+        this.stock = stock;
+        this.kategoria = kategoria;
+    }
+
+    public void setProdutkua(int prodID, String prodIzena, String prodDeskr, double prodPrezioa, int prodStock,
+            String prodKat) {
+        this.ID = prodID;
+        this.izena = prodIzena;
+        this.deskribapena = prodDeskr;
+        this.prezioa = prodPrezioa;
+        this.stock = prodStock;
+        this.kategoria = prodKat;
     }
 
     public int getIDProduktuak() {

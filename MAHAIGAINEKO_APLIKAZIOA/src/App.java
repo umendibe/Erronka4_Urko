@@ -5,6 +5,11 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import java.util.ArrayList;
+import java.util.List;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class App {
     static BufferedReader br;
@@ -27,7 +32,8 @@ public class App {
                 "\n 4. Produktuak Ezabatu" +
                 "\n 5. Produktuak Zerrendatu" +
                 "\n 6. Produktuak Bilatu" +
-                "\n 7. Programa Amaitu");
+                "\n 7. Informazioa Esportatu" +
+                "\n 8. Programa Amaitu");
         int aukeraMenu = Integer.parseInt(br.readLine());
 
         switch (aukeraMenu) {
@@ -72,9 +78,12 @@ public class App {
                 break;
 
             case 7:
-                System.out.println("PROGRAMA ITXI DUZU.");
+                informazioaEsportatu();
                 break;
 
+            case 8:
+                System.out.println("PROGRAMA ITXI DUZU.");
+                break;
             default:
                 break;
         }
@@ -83,29 +92,29 @@ public class App {
     public static void produktuakGehitu() throws IOException {
         System.out.println("Sartu produktuaren datuak: ");
         System.out.println("ID-a: ");
-        Produktuak.ID = Integer.parseInt(br.readLine());
+        int ID = Integer.parseInt(br.readLine());
         System.out.println("Izena: ");
-        Produktuak.izena = br.readLine();
+        String izena = br.readLine();
         System.out.println("Deskripapena: ");
-        Produktuak.deskribapena = br.readLine();
+        String deskribapena = br.readLine();
         System.out.println("Prezioa: ");
-        Produktuak.prezioa = Double.parseDouble(br.readLine());
+        double prezioa = Double.parseDouble(br.readLine());
         System.out.println("Stock-a");
-        Produktuak.stock = Integer.parseInt(br.readLine());
+        int stock = Integer.parseInt(br.readLine());
         System.out.println("Kategoria");
-        Produktuak.kategoria = br.readLine();
+        String kategoria = br.readLine();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBurl, user, password);
             pst = con.prepareStatement(
                     "INSERT INTO Produktuak (ID, izena, deskribapena, prezioa, stock, kategoria) VALUES (?, ?, ?, ?, ?, ?)");
-            pst.setInt(1, Produktuak.ID);
-            pst.setString(2, Produktuak.izena);
-            pst.setString(3, Produktuak.deskribapena);
-            pst.setDouble(4, Produktuak.prezioa);
-            pst.setInt(5, Produktuak.stock);
-            pst.setString(6, Produktuak.kategoria);
+            pst.setInt(1, ID);
+            pst.setString(2, izena);
+            pst.setString(3, deskribapena);
+            pst.setDouble(4, prezioa);
+            pst.setInt(5, stock);
+            pst.setString(6, kategoria);
             pst.executeUpdate();
             System.out.println("Produktua ondo gehitu da!");
         } catch (Exception e) {
@@ -160,7 +169,7 @@ public class App {
 
     public static void produktuakEguneratu() throws IOException {
         System.out.println("Sartu eguneratu nahi duzun produktuaren ID-a: ");
-        Produktuak.ID = Integer.parseInt(br.readLine());
+        int ID = Integer.parseInt(br.readLine());
 
         System.out.println("Zer datu eguneratu nahi duzu? ");
         System.out.println("1. Izena");
@@ -179,7 +188,7 @@ public class App {
             con = DriverManager.getConnection(DBurl, user, password);
 
             pst = con.prepareStatement("SELECT * FROM Produktuak WHERE ID = ?");
-            pst.setInt(1, Produktuak.ID);
+            pst.setInt(1, ID);
             rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -223,7 +232,7 @@ public class App {
                 pst.setDouble(3, prezioa);
                 pst.setInt(4, stock);
                 pst.setString(5, kategoria);
-                pst.setInt(6, Produktuak.ID);
+                pst.setInt(6, ID);
                 pst.executeUpdate();
 
                 System.out.println("Produktua ondo eguneratu da!");
@@ -249,13 +258,13 @@ public class App {
 
     public static void produktuaEzabatu() throws IOException {
         System.out.println("Sartu ezabatu nahi duzun produktuaren ID-a: ");
-        Produktuak.ID = Integer.parseInt(br.readLine());
+        int ID = Integer.parseInt(br.readLine());
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBurl, user, password);
             pst = con.prepareStatement("DELETE FROM Produktuak WHERE ID = ?");
-            pst.setInt(1, Produktuak.ID);
+            pst.setInt(1, ID);
             pst.executeUpdate();
             System.out.println("Produktua ondo ezabatu da!");
         } catch (Exception e) {
@@ -385,15 +394,15 @@ public class App {
             int columnCount = rsmd.getColumnCount();
             boolean daturikDago = false;
 
-            for (int i = 1; i<=columnCount; i++) {
-                    System.out.print(rsmd.getColumnName(i).toUpperCase() + "  ");
-                }
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.print(rsmd.getColumnName(i).toUpperCase() + "  ");
+            }
 
             System.out.println("\n");
 
             while (rs.next()) {
                 daturikDago = true;
-                for (int i = 1; i<=columnCount; i++) {
+                for (int i = 1; i <= columnCount; i++) {
                     System.out.print(rs.getString(i) + ", ");
                 }
                 System.out.println();
@@ -407,11 +416,32 @@ public class App {
             System.out.println("ERROREA");
             e.printStackTrace();
         }
-        
 
     }
 
     public static void informazioaEsportatu() {
-
+        List<Produktuak> produktuenLista = new ArrayList<>();
+        try {
+            con = DriverManager.getConnection(DBurl, user, password);
+            pst = con.prepareStatement("SELECT * FROM Produktuak");
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                Produktuak produktua = new Produktuak();
+                produktua.ID = rs.getInt("ID");
+                produktua.izena = rs.getString("izena");
+                produktua.deskribapena = rs.getString("deskribapena");
+                produktua.prezioa = rs.getDouble("prezioa");
+                produktua.stock = rs.getInt("stock");
+                produktua.kategoria = rs.getString("kategoria");
+                produktuenLista.add(produktua);
+            }
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            String json = gson.toJson(produktuenLista);
+            Path path = Paths.get("produktuak.json");
+            Files.write(path, json.getBytes());
+            System.out.println("Fitxategia ondo esportatu da!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
