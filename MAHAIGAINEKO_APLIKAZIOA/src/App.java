@@ -66,7 +66,7 @@ public class App {
                 break;
 
             case 6:
-
+                produktuakBilatu();
                 break;
 
             case 7:
@@ -369,7 +369,43 @@ public class App {
 
     }
 
-    public void produktuakBilatu() {
+    public static void produktuakBilatu() throws IOException {
+        br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Sartu bilatu nahi duzun produktuaren ID-a: ");
+        int bilatuID = Integer.parseInt(br.readLine());
+
+        try {
+            con = DriverManager.getConnection(DBurl, user, password);
+            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE ID = ?");
+            pst.setInt(1, bilatuID);
+            rs = pst.executeQuery();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            boolean daturikDago = false;
+
+            for (int i = 1; i<=columnCount; i++) {
+                    System.out.print(rsmd.getColumnName(i).toUpperCase() + "  ");
+                }
+
+            System.out.println("\n");
+
+            while (rs.next()) {
+                daturikDago = true;
+                for (int i = 1; i<=columnCount; i++) {
+                    System.out.print(rs.getString(i) + ", ");
+                }
+                System.out.println();
+            }
+
+            if (!daturikDago) {
+                System.out.println("Ez dago produkturik kategoria honetan.");
+            }
+
+        } catch (Exception e) {
+            System.out.println("ERROREA");
+            e.printStackTrace();
+        }
+        
 
     }
 }
