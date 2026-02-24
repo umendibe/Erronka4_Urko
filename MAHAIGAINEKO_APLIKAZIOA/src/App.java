@@ -101,20 +101,31 @@ public class App {
         double prezioa = Double.parseDouble(br.readLine());
         System.out.println("Stock-a");
         int stock = Integer.parseInt(br.readLine());
-        System.out.println("Kategoria");
-        String kategoria = br.readLine();
+        System.out.println("Kategoria (sartu ID-a): ");
+        System.out.println("1111 - Sudaderak");
+        System.out.println("2222 - Alkandorak");
+        System.out.println("3333 - Kamisetak");
+        System.out.println("4444 - Galtzak");
+        System.out.println("5555 - Zapatillak");
+        int kategoria = Integer.parseInt(br.readLine());
+        System.out.println("Sorkuntza-data (yyyy-mm-dd):");
+        String sorkuntzaData = br.readLine();
+        System.out.println("Irudiaren URL-a: ");
+        String irudiaURL = br.readLine();
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBurl, user, password);
             pst = con.prepareStatement(
-                    "INSERT INTO Produktuak (ID, izena, deskribapena, prezioa, stock, kategoria) VALUES (?, ?, ?, ?, ?, ?)");
+                    "INSERT INTO Produktuak (ID, izena, deskribapena, prezioa, stock, kat_kod, sorkuntza_data, irudia) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             pst.setInt(1, ID);
             pst.setString(2, izena);
             pst.setString(3, deskribapena);
             pst.setDouble(4, prezioa);
             pst.setInt(5, stock);
-            pst.setString(6, kategoria);
+            pst.setInt(6, kategoria);
+            pst.setString(7, sorkuntzaData);
+            pst.setString(8, irudiaURL);
             pst.executeUpdate();
             System.out.println("Produktua ondo gehitu da!");
         } catch (Exception e) {
@@ -144,7 +155,7 @@ public class App {
             con = DriverManager.getConnection(DBurl, user, password);
             String line;
             pst = con.prepareStatement(
-                    "INSERT INTO Produktuak (ID, izena, deskribapena, prezioa, stock, kategoria) VALUES (?, ?, ?, ?, ?, ?)");
+                    "INSERT INTO Produktuak (ID, izena, deskribapena, prezioa, stock, kat_kod, sorkuntza_data, irudia) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             while ((line = br.readLine()) != null) {
                 String[] parts = line.split(",");
                 pst.setInt(1, Integer.parseInt(parts[0]));
@@ -153,7 +164,8 @@ public class App {
                 pst.setDouble(4, Double.parseDouble(parts[3]));
                 pst.setInt(5, Integer.parseInt(parts[4]));
                 pst.setString(6, parts[5]);
-
+                pst.setString(7, parts[6]);
+                pst.setString(8, parts[7]);
                 pst.executeUpdate();
             }
             br.close();
@@ -177,6 +189,8 @@ public class App {
         System.out.println("3. Prezioa");
         System.out.println("4. Stock");
         System.out.println("5. Kategoria");
+        System.out.println("6. Sorkuntza-data");
+        System.out.println("7. Irudiaren URL-a");
         int aukera = Integer.parseInt(br.readLine());
 
         Connection con = null;
@@ -196,7 +210,9 @@ public class App {
                 String deskribapena = rs.getString("deskribapena");
                 double prezioa = rs.getDouble("prezioa");
                 int stock = rs.getInt("stock");
-                String kategoria = rs.getString("kategoria");
+                int kategoria = rs.getInt("kat_kod");
+                String sorkuntzaData = rs.getString("sorkuntza_data");
+                String irudiaURL = rs.getString("irudia");
 
                 switch (aukera) {
                     case 1:
@@ -217,7 +233,15 @@ public class App {
                         break;
                     case 5:
                         System.out.println("Sartu nahi duzun kategoria: ");
-                        kategoria = br.readLine();
+                        kategoria = Integer.parseInt(br.readLine());
+                        break;
+                    case 6:
+                        System.out.println("Sartu nahi duzun sorkuntza-data: ");
+                        sorkuntzaData = br.readLine();
+                        break;
+                    case 7:
+                        System.out.println("Sartu nahi duzun irudiaren URL-a: ");
+                        irudiaURL = br.readLine();
                         break;
                     default:
                         System.out.println("Ez da aukerarik aurkitu.");
@@ -226,13 +250,15 @@ public class App {
 
                 pst.close();
                 pst = con.prepareStatement(
-                        "UPDATE Produktuak SET izena = ?, deskribapena = ?, prezioa = ?, stock = ?, kategoria = ? WHERE ID = ?");
+                        "UPDATE Produktuak SET izena = ?, deskribapena = ?, prezioa = ?, stock = ?, kat_kod = ?, sorkuntza_data = ?, irudia = ? WHERE ID = ?");
                 pst.setString(1, izena);
                 pst.setString(2, deskribapena);
                 pst.setDouble(3, prezioa);
                 pst.setInt(4, stock);
-                pst.setString(5, kategoria);
-                pst.setInt(6, ID);
+                pst.setInt(5, kategoria);
+                pst.setString(6, sorkuntzaData);
+                pst.setString(7, irudiaURL);
+                pst.setInt(8, ID);
                 pst.executeUpdate();
 
                 System.out.println("Produktua ondo eguneratu da!");
@@ -290,7 +316,8 @@ public class App {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBurl, user, password);
             st = con.createStatement();
-            rs = st.executeQuery("SELECT * FROM Produktuak");
+            rs = st.executeQuery(
+                    "SELECT ID, izena, deskribapena, prezioa, stock, kat_kod, sorkuntza_data FROM Produktuak");
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnCount = rsmd.getColumnCount();
             boolean daturikDago = false;
@@ -320,29 +347,29 @@ public class App {
         br = new BufferedReader(new InputStreamReader(System.in));
 
         System.out.println("Sartu nahi duzun kategoria: ");
-        System.out.println("1. Zapatillak");
-        System.out.println("2. Sudaderak");
-        System.out.println("3. Kamisetak");
-        System.out.println("4. Alkandorak");
-        System.out.println("5. Galtzak");
+        System.out.println("1111 - Sudaderak");
+        System.out.println("2222 - Alkandorak");
+        System.out.println("3333 - Kamisetak");
+        System.out.println("4444 - Galtzak");
+        System.out.println("5555 - Zapatillak");
         int aukeraKategoria = Integer.parseInt(br.readLine());
 
         String kategoriaNizena;
         switch (aukeraKategoria) {
-            case 1:
-                kategoriaNizena = "Zapatillak";
-                break;
-            case 2:
+            case 1111:
                 kategoriaNizena = "Sudaderak";
                 break;
-            case 3:
-                kategoriaNizena = "Kamisetak";
-                break;
-            case 4:
+            case 2222:
                 kategoriaNizena = "Alkandorak";
                 break;
-            case 5:
+            case 3333:
+                kategoriaNizena = "Kamisetak";
+                break;
+            case 4444:
                 kategoriaNizena = "Galtzak";
+                break;
+            case 5555:
+                kategoriaNizena = "Zapatillak";
                 break;
             default:
                 System.out.println("Aukera baliogabea.");
@@ -352,8 +379,8 @@ public class App {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBurl, user, password);
-            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE kategoria = ?");
-            pst.setString(1, kategoriaNizena);
+            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE kat_kod = ?");
+            pst.setInt(1, aukeraKategoria);
             rs = pst.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
             int columnCount = rsmd.getColumnCount();
@@ -436,7 +463,9 @@ public class App {
                 produktua.deskribapena = rs.getString("deskribapena");
                 produktua.prezioa = rs.getDouble("prezioa");
                 produktua.stock = rs.getInt("stock");
-                produktua.kategoria = rs.getString("kategoria");
+                produktua.kategoria = rs.getString("kat_kod");
+                produktua.sorkuntzaData = rs.getString("sorkuntza_data");
+                produktua.irudiaURL = rs.getString("irudia");
                 produktuenLista.add(produktua);
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
