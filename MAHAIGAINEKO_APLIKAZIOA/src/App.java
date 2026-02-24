@@ -67,7 +67,7 @@ public class App {
                 System.out.println("2. Kategoriaren arabera");
                 int aukeraZerrendatu = Integer.parseInt(br.readLine());
                 if (aukeraZerrendatu == 1) {
-                    produktuakZerrednatu();
+                    produktuakZerrendatu();
                 } else if (aukeraZerrendatu == 2) {
                     produktuakZerrendatuKategoria();
                 }
@@ -285,7 +285,7 @@ public class App {
         }
     }
 
-    public static void produktuakZerrednatu() {
+    public static void produktuakZerrendatu() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBurl, user, password);
@@ -307,10 +307,13 @@ public class App {
                 System.out.println();
             }
 
+            if (!daturikDago) {
+                System.out.println("Ez dago produkturik datu-basean.");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void produktuakZerrendatuKategoria() throws IOException {
@@ -421,6 +424,7 @@ public class App {
 
     public static void informazioaEsportatu() {
         List<Produktuak> produktuenLista = new ArrayList<>();
+        String rutaDirektorioa = "C:\\Users\\ikumendibe25\\Documents\\ERRONKAK\\Erronka4_Urko\\WEB_ORRIA\\htdocs\\js";
         try {
             con = DriverManager.getConnection(DBurl, user, password);
             pst = con.prepareStatement("SELECT * FROM Produktuak");
@@ -437,7 +441,7 @@ public class App {
             }
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
             String json = gson.toJson(produktuenLista);
-            Path path = Paths.get("produktuak.json");
+            Path path = Paths.get(rutaDirektorioa + "/produktuak.json");
             Files.write(path, json.getBytes());
             System.out.println("Fitxategia ondo esportatu da!");
         } catch (Exception e) {
