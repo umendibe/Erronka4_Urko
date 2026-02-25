@@ -1,6 +1,13 @@
 {
     "java.project.referencedLibraries": [
-        "MAHAIGAINEKO_APLIKAZIOA/lib/**/*.jar"
+        "MAHAIGAINEKO_APLIKAZIOA\\lib\\junit-platform-console-standalone-1.13.0-M3.jar",
+        "c:\\Users\\ikumendibe25\\Documents\\ERRONKAK\\Erronka4_Urko\\MAHAIGAINEKO_APLIKAZIOA\\lib\\junit-platform-console-standalone-1.13.0-M3.jar",
+        "c:\\Users\\ikumendibe25\\Documents\\ERRONKAK\\Erronka4_Urko\\MAHAIGAINEKO_APLIKAZIOA\\lib\\gson-2.10.1.jar",
+        "c:\\Users\\ikumendibe25\\Documents\\ERRONKAK\\Erronka4_Urko\\MAHAIGAINEKO_APLIKAZIOA\\lib\\mysql-connector-j-9.6.0.jar",
+        "test-lib\\**\\*.jar"
     ],
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "java.project.sourcePaths": [
+        "MAHAIGAINEKO_APLIKAZIOA\\src"
+    ]
 }

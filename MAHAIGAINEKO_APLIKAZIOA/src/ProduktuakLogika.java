@@ -329,7 +329,8 @@ public class ProduktuakLogika {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(DBurl, user, password);
-            pst = con.prepareStatement("SELECT * FROM Produktuak WHERE kat_kod = ?");
+            pst = con.prepareStatement(
+                    "SELECT ID, izena, deskribapena, prezioa, stock, kat_kod, sorkuntza_data FROM Produktuak WHERE kat_kod = ?");
             pst.setInt(1, aukeraKategoria);
             rs = pst.executeQuery();
             ResultSetMetaData rsmd = rs.getMetaData();
