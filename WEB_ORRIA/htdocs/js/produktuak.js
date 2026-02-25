@@ -137,21 +137,7 @@ function aplikatuIragazkiak() {
 
     if (!hautatutakoKategoriak.has('denak')) {
         produktuIragaziak = produktuGuztiak.filter(produktu => {
-            const kategoriaMap = {
-                'kamisetak': 'kamisetak',
-                'prakak': 'galtzak',
-                'galtzak': 'galtzak',
-                'jakak': 'txaketak',
-                'txaketak': 'txaketak',
-                'jertseak': 'jertseakBtn',
-                'zapatak': 'zapatak',
-                'soinekoak': 'soinekoak',
-                'zapatilak': 'zapatilak',
-                'alkandorak': 'kamisetak'
-            };
-
-            const produktuKategoria = kategoriaMap[produktu.kategoria] || produktu.kategoria;
-            return hautatutakoKategoriak.has(produktuKategoria);
+            return hautatutakoKategoriak.has(produktu.kategoria.toString());
         });
     }
 
@@ -168,13 +154,11 @@ function eguneratuTitulua() {
     } else if (hautatutakoKategoriak.size === 1) {
         const kategoria = Array.from(hautatutakoKategoriak)[0];
         const kategoriaTituluak = {
-            'kamisetak': 'Kamisetak',
-            'galtzak': 'Galtzak',
-            'jertseakBtn': 'Jertseak',
-            'txaketak': 'Txaketak',
-            'zapatak': 'Zapatak',
-            'soinekoak': 'Soinekoak',
-            'zapatilak': 'Zapatilak'
+            '1111': 'Sudaderak',
+            '2222': 'Alkandorak',
+            '3333': 'Kamisetak',
+            '4444': 'Galtzak',
+            '5555': 'Zapatillak'
         };
         titulua.textContent = kategoriaTituluak[kategoria] || 'Produktuak';
     } else {
