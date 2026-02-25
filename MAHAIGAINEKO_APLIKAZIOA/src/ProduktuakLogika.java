@@ -6,7 +6,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.sql.*;
 
 import com.google.gson.Gson;
@@ -80,36 +82,51 @@ public class ProduktuakLogika {
     }
 
     public static void fitxategiaIgo() throws IOException {
-        BufferedReader breader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Sartu fitxategiaren ruta lokala: ");
-        String fitxategia = breader.readLine();
-        br = new BufferedReader(new FileReader(fitxategia));
-        try {
+        String fitxategia = br.readLine();
+
+        try (BufferedReader fileReader = new BufferedReader(new FileReader(fitxategia))) {
             con = DriverManager.getConnection(DBurl, user, password);
-            String line;
             pst = con.prepareStatement(
                     "INSERT INTO Produktuak (ID, izena, deskribapena, prezioa, stock, kat_kod, sorkuntza_data, irudia) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-            while ((line = br.readLine()) != null) {
+
+            String line;
+            while ((line = fileReader.readLine()) != null) {
                 String[] parts = line.split(",");
-                pst.setInt(1, Integer.parseInt(parts[0]));
-                pst.setString(2, parts[1]);
-                pst.setString(3, parts[2]);
-                pst.setDouble(4, Double.parseDouble(parts[3]));
-                pst.setInt(5, Integer.parseInt(parts[4]));
-                pst.setString(6, parts[5]);
-                pst.setString(7, parts[6]);
-                pst.setString(8, parts[7]);
+                int ID = Integer.parseInt(parts[0].trim());
+                String izena = parts[1].trim();
+                String deskribapena = parts[2].trim();
+                double prezioa = Double.parseDouble(parts[3].trim());
+                int stock = Integer.parseInt(parts[4].trim());
+                int kat_kod = Integer.parseInt(parts[5].trim());
+                java.sql.Date sorkuntzaData = java.sql.Date.valueOf(parts[6].trim());
+                String irudia = parts[7].trim();
+
+                pst.setInt(1, ID);
+                pst.setString(2, izena);
+                pst.setString(3, deskribapena);
+                pst.setDouble(4, prezioa);
+                pst.setInt(5, stock);
+                pst.setInt(6, kat_kod);
+                pst.setDate(7, sorkuntzaData);
+                pst.setString(8, irudia);
                 pst.executeUpdate();
             }
-            br.close();
-            pst.close();
-            con.close();
-
             System.out.println("Fitxategia ondo igo da!");
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (pst != null)
+                    pst.close();
+            } catch (Exception e) {
+            }
+            try {
+                if (con != null)
+                    con.close();
+            } catch (Exception e) {
+            }
         }
-
     }
 
     public static void produktuakEguneratu() throws IOException {
@@ -382,9 +399,11 @@ public class ProduktuakLogika {
 
     }
 
-    public static void informazioaEsportatu() {
+    public static void informazioaEsportatu() throws IOException {
         List<Produktuak> produktuenLista = new ArrayList<>();
-        String rutaDirektorioa = "C:\\Users\\ikumendibe25\\Documents\\ERRONKAK\\Erronka4_Urko\\WEB_ORRIA\\htdocs\\js";
+        br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Sartu fitxategia gordetzeko ruta: ");
+        String rutaDirektorioa = br.readLine();
         try {
             con = DriverManager.getConnection(DBurl, user, password);
             pst = con.prepareStatement("SELECT * FROM Produktuak");
@@ -406,6 +425,81 @@ public class ProduktuakLogika {
             Path path = Paths.get(rutaDirektorioa + "/produktuak.json");
             Files.write(path, json.getBytes());
             System.out.println("Fitxategia ondo esportatu da!");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void esportatuGehienSaldutakoak() throws IOException {
+        List<Object> lista = new ArrayList<>();
+        br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Sartu fitxategia gordetzeko ruta: ");
+        String rutaDirektorioa = br.readLine();
+
+        try {
+            con = DriverManager.getConnection(DBurl, user, password);
+
+            String sql = "SELECT p.ID, p.izena, SUM(pe.kopurua) AS guztira_salduta " +
+                    "FROM Produktuak p " +
+                    "JOIN Produktu_Eskari pe ON p.ID = pe.prod_kod " +
+                    "GROUP BY p.ID " +
+                    "ORDER BY guztira_salduta DESC " +
+                    "LIMIT 5";
+
+            pst = con.prepareStatement(sql);
+            rs = pst.executeQuery();
+
+            while (rs.next()) {
+                Map<String, Object> obj = new HashMap<>();
+                obj.put("ID", rs.getInt("ID"));
+                obj.put("izena", rs.getString("izena"));
+                obj.put("guztira_salduta", rs.getInt("guztira_salduta"));
+                lista.add(obj);
+            }
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Files.write(Paths.get(rutaDirektorioa + "/gehien_saldutakoak.json"), gson.toJson(lista).getBytes());
+
+            System.out.println("Gehien saldutako produktuak esportatuta!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void esportatuEstatistikak() throws IOException {
+        br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Sartu fitxategia gordetzeko ruta: ");
+        String rutaDirektorioa = br.readLine();
+
+        try {
+            con = DriverManager.getConnection(DBurl, user, password);
+
+            Map<String, Object> stats = new HashMap<>();
+
+            Statement st = con.createStatement();
+
+            ResultSet rs1 = st.executeQuery("SELECT COUNT(*) FROM Produktuak");
+            if (rs1.next())
+                stats.put("produktu_kopurua", rs1.getInt(1));
+
+            ResultSet rs2 = st.executeQuery("SELECT SUM(stock) FROM Produktuak");
+            if (rs2.next())
+                stats.put("stock_totala", rs2.getInt(1));
+
+            ResultSet rs3 = st.executeQuery("SELECT COUNT(*) FROM Eskariak");
+            if (rs3.next())
+                stats.put("eskari_kopurua", rs3.getInt(1));
+
+            ResultSet rs4 = st.executeQuery("SELECT SUM(prezio_totala) FROM Eskariak");
+            if (rs4.next())
+                stats.put("diru_sarrera_totala", rs4.getDouble(1));
+
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            Files.write(Paths.get(rutaDirektorioa + "/estatistikak.json"), gson.toJson(stats).getBytes());
+
+            System.out.println("Estatistikak esportatuta!");
+
         } catch (Exception e) {
             e.printStackTrace();
         }

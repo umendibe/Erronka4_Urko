@@ -60,7 +60,18 @@ public class App {
                 break;
 
             case 7:
-                ProduktuakLogika.informazioaEsportatu();
+                System.out.println("Zer esportatu nahi duzu?");
+                System.out.println("1. Gehien saldutako produktuak");
+                System.out.println("2. Estatistikak");
+                System.out.println("3. Produktu guztien informazioa");
+                int aukeraEsportatu = Integer.parseInt(br.readLine());
+                if (aukeraEsportatu == 1) {
+                    ProduktuakLogika.esportatuGehienSaldutakoak();
+                } else if (aukeraEsportatu == 2) {
+                    ProduktuakLogika.esportatuEstatistikak();
+                } else if (aukeraEsportatu == 3) {
+                    ProduktuakLogika.informazioaEsportatu();
+                }
                 break;
 
             case 8:
