@@ -226,9 +226,9 @@ public class ProduktuakLogika {
                 pst.setDouble(3, prezioa);
                 pst.setInt(4, stock);
                 pst.setString(5, kategoria);
-                pst.setInt(6, ID);
-                pst.setString(7, sorkuntzaData);
-                pst.setString(8, irudiaURL);
+                pst.setString(6, sorkuntzaData);
+                pst.setString(7, irudiaURL);
+                pst.setInt(8, ID);
                 pst.executeUpdate();
 
                 System.out.println("Produktua ondo eguneratu da!");
@@ -577,4 +577,5 @@ public class ProduktuakLogika {
         return formatuatua + "â‚¬";
     }
 }
+
 
