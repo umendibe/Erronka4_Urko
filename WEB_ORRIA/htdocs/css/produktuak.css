@@ -68,6 +68,8 @@ body {
     padding: 0 20px;
     gap: 30px;
     align-items: flex-start;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* --- SIDEBAR FILTROS --- */
@@ -80,6 +82,7 @@ body {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     position: sticky;
     top: 20px;
+    box-sizing: border-box;
 }
 
 .alboko-titulua {
@@ -190,6 +193,8 @@ body {
 /* --- ÁREA DE PRODUCTOS --- */
 .produktu-eremua {
     flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .produktu-goiburua {
@@ -220,6 +225,8 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 25px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* --- TARJETA DE PRODUCTO --- */
@@ -326,22 +333,49 @@ body {
 @media (max-width: 1024px) {
     .eduki-nagusia {
         flex-direction: column;
+        gap: 25px;
     }
 
     .alboko-barra {
         width: 100%;
         position: static;
+        padding: 20px;
     }
 
     .hero-title {
         font-size: 36px;
     }
+
+    .produktu-sarea {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 20px;
+    }
 }
 
 @media (max-width: 768px) {
+    .eduki-nagusia {
+        flex-direction: column;
+        gap: 20px;
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .alboko-barra {
+        width: 100%;
+        position: static;
+        padding: 15px;
+        margin-bottom: 0;
+    }
+
+    .produktu-eremua {
+        width: 100%;
+        flex-grow: 1;
+    }
+
     .produktu-sarea {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 15px;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 12px;
+        width: 100%;
     }
 
     .hero-title {
@@ -349,18 +383,52 @@ body {
     }
 
     .hero-section {
-        padding: 50px 20px;
+        padding: 50px 15px;
     }
 
     .produktu-irudia-edukiontzia {
         height: 250px;
     }
+
+    .produktu-info {
+        padding: 15px;
+    }
+
+    .produktu-txartela h3 {
+        font-size: 14px;
+    }
+
+    .prezioa {
+        font-size: 16px;
+    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+    main, .eduki-nagusia {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .alboko-barra {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    .produktu-eremua {
+        width: 100%;
+    }
+
     .produktu-sarea {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
         gap: 10px;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+
+    .hero-section {
+        padding: 40px 15px;
     }
 
     .produktu-irudia-edukiontzia {
@@ -368,6 +436,67 @@ body {
     }
 
     .produktu-info {
-        padding: 15px;
+        padding: 12px;
+    }
+
+    .produktu-txartela h3 {
+        font-size: 13px;
+    }
+
+    .prezioa {
+        font-size: 15px;
+    }
+
+    .gehitu-saskira-btn {
+        padding: 10px;
+        font-size: 12px;
+    }
+
+    .alboko-titulua {
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    .iragazki-aukera {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .eduki-nagusia {
+        gap: 15px;
+    }
+
+    .produktu-sarea {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .produktu-irudia-edukiontzia {
+        height: 150px;
+    }
+
+    .produktu-info {
+        padding: 10px;
+    }
+
+    .hero-title {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .hero-subtitle {
+        font-size: 14px;
+    }
+
+    .hero-cta {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+
+    .txartel-xehetasunak {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
     }
 }
