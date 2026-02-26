@@ -22,9 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.sql.*;
 
 import com.google.gson.Gson;
@@ -469,7 +467,8 @@ public class ProduktuakLogika {
             ResultSet rs1 = st.executeQuery("SELECT COALESCE(SUM(prezio_totala), 0) as irabaziak_totala FROM Eskariak");
             if (rs1.next()) {
                 double irabaziak = rs1.getDouble("irabaziak_totala");
-                estadistikak.addProperty("irabaziak_totala", formatuEuroa(irabaziak));
+                String irabazia_formatted = String.format("%.2f", irabaziak).replace(".", ",") + "EUR";
+                estadistikak.addProperty("irabaziak_totala", irabazia_formatted);
             }
 
             // Stock baxua (< 5)
@@ -521,7 +520,8 @@ public class ProduktuakLogika {
                 int hila = rs5.getInt("hila");
                 item.addProperty("urtea", rs5.getInt("urtea"));
                 item.addProperty("hila", hilabeak[hila]);
-                item.addProperty("irabazia", formatuEuroa(rs5.getDouble("irabazia")));
+                String ira_formatted = String.format("%.2f", rs5.getDouble("irabazia")).replace(".", ",") + "EUR";
+                item.addProperty("irabazia", ira_formatted);
                 hileko_irabaziak.add(item);
             }
             estadistikak.add("hileko_irabaziak", hileko_irabaziak);
@@ -544,7 +544,8 @@ public class ProduktuakLogika {
             while (rs7.next()) {
                 JsonObject item = new JsonObject();
                 item.addProperty("izena", rs7.getString("izena"));
-                item.addProperty("balioa", formatuEuroa(rs7.getDouble("balioa")));
+                String bal_formatted = String.format("%.2f", rs7.getDouble("balioa")).replace(".", ",") + "EUR";
+                item.addProperty("balioa", bal_formatted);
                 balio_handikoak.add(item);
             }
             estadistikak.add("balio_handikoak", balio_handikoak);
@@ -568,14 +569,7 @@ public class ProduktuakLogika {
      * @param baluoa baluoa
      * @return formatuatutako euroa (XX.XXX,XXâ‚¬)
      */
-    private static String formatuEuroa(double balioa) {
-        // Euroa formatu lokalizatuarekin
-        java.text.DecimalFormat df = new java.text.DecimalFormat("###,##0.00");
-        String formatuatua = df.format(balioa);
-        // Ordeztu puntua pista eta alderantziz
-        formatuatua = formatuatua.replace(",", "|").replace(".", ",").replace("|", ".");
-        return formatuatua + "â‚¬";
-    }
 }
+
 
 
