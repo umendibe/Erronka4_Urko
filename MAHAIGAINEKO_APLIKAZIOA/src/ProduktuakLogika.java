@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Produktuen Data-basearen Negozio-Logika
  * 
  * Kodearen funtzionalitate nagusia, zaharren artean:
@@ -29,6 +29,9 @@ import java.sql.*;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonArray;
+import java.io.FileWriter;
 
 // Business logic class for product operations
 public class ProduktuakLogika {
@@ -447,79 +450,131 @@ public class ProduktuakLogika {
             e.printStackTrace();
         }
     }
-
-    public static void esportatuGehienSaldutakoak() throws IOException {
-        List<Object> lista = new ArrayList<>();
-        br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Sartu fitxategia gordetzeko ruta: ");
-        String rutaDirektorioa = br.readLine();
-
-        try {
-            con = DriverManager.getConnection(DBurl, user, password);
-
-            String sql = "SELECT p.ID, p.izena, SUM(pe.kopurua) AS guztira_salduta " +
-                    "FROM Produktuak p " +
-                    "JOIN Produktu_Eskari pe ON p.ID = pe.prod_kod " +
-                    "GROUP BY p.ID " +
-                    "ORDER BY guztira_salduta DESC " +
-                    "LIMIT 5";
-
-            pst = con.prepareStatement(sql);
-            rs = pst.executeQuery();
-
-            while (rs.next()) {
-                Map<String, Object> obj = new HashMap<>();
-                obj.put("ID", rs.getInt("ID"));
-                obj.put("izena", rs.getString("izena"));
-                obj.put("guztira_salduta", rs.getInt("guztira_salduta"));
-                lista.add(obj);
-            }
-
-            Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            Files.write(Paths.get(rutaDirektorioa + "/gehien_saldutakoak.json"), gson.toJson(lista).getBytes());
-
-            System.out.println("Gehien saldutako produktuak esportatuta!");
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     public static void esportatuEstatistikak() throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Sartu fitxategia gordetzeko ruta: ");
-        String rutaDirektorioa = br.readLine();
+        System.out.println("Sartu fitxategia gordetzeko ruta (hutsik web-rako):");
+        String rutaDirektorioa = br.readLine().trim();
+        if (rutaDirektorioa.isEmpty()) {
+            rutaDirektorioa = "../../WEB_ORRIA/htdocs/js";
+        }
 
         try {
             con = DriverManager.getConnection(DBurl, user, password);
 
-            Map<String, Object> stats = new HashMap<>();
-
+            JsonObject estadistikak = new JsonObject();
             Statement st = con.createStatement();
 
-            ResultSet rs1 = st.executeQuery("SELECT COUNT(*) FROM Produktuak");
-            if (rs1.next())
-                stats.put("produktu_kopurua", rs1.getInt(1));
+            // Irabaziak totala
+            ResultSet rs1 = st.executeQuery("SELECT COALESCE(SUM(prezio_totala), 0) as irabaziak_totala FROM Eskariak");
+            if (rs1.next()) {
+                double irabaziak = rs1.getDouble("irabaziak_totala");
+                estadistikak.addProperty("irabaziak_totala", formatuEuroa(irabaziak));
+            }
 
-            ResultSet rs2 = st.executeQuery("SELECT SUM(stock) FROM Produktuak");
-            if (rs2.next())
-                stats.put("stock_totala", rs2.getInt(1));
+            // Stock baxua (< 5)
+            ResultSet rs2 = st.executeQuery("SELECT id, izena, stock FROM Produktuak WHERE stock < 5");
+            JsonArray stock_baxua = new JsonArray();
+            while (rs2.next()) {
+                JsonObject item = new JsonObject();
+                item.addProperty("izena", rs2.getString("izena"));
+                item.addProperty("kantitatea", rs2.getInt("stock"));
+                stock_baxua.add(item);
+            }
+            estadistikak.add("stock_baxua", stock_baxua);
 
-            ResultSet rs3 = st.executeQuery("SELECT COUNT(*) FROM Eskariak");
-            if (rs3.next())
-                stats.put("eskari_kopurua", rs3.getInt(1));
+            // Gehien saldutakoak (top 3)
+            ResultSet rs3 = st.executeQuery(
+                "SELECT p.id, p.izena, COUNT(e.id) as salmentak FROM Produktuak p " +
+                "LEFT JOIN Eskariak e ON p.id = e.produktu_id " +
+                "GROUP BY p.id ORDER BY salmentak DESC LIMIT 3");
+            JsonArray gehien_saldutakoak = new JsonArray();
+            while (rs3.next()) {
+                JsonObject item = new JsonObject();
+                item.addProperty("produktua", rs3.getString("izena"));
+                item.addProperty("salmentak", rs3.getInt("salmentak"));
+                gehien_saldutakoak.add(item);
+            }
+            estadistikak.add("gehien_saldutakoak", gehien_saldutakoak);
 
-            ResultSet rs4 = st.executeQuery("SELECT SUM(prezio_totala) FROM Eskariak");
-            if (rs4.next())
-                stats.put("diru_sarrera_totala", rs4.getDouble(1));
+            // Bezero onenak (top 3)
+            ResultSet rs4 = st.executeQuery(
+                "SELECT bezeroa, COUNT(*) as eskaerak FROM Eskariak GROUP BY bezeroa ORDER BY eskaerak DESC LIMIT 3");
+            JsonArray bezero_onenak = new JsonArray();
+            while (rs4.next()) {
+                JsonObject item = new JsonObject();
+                item.addProperty("bezeroa", rs4.getString("bezeroa"));
+                item.addProperty("eskaerak", rs4.getInt("eskaerak"));
+                bezero_onenak.add(item);
+            }
+            estadistikak.add("bezero_onenak", bezero_onenak);
 
+            // Hileko irabaziak
+            ResultSet rs5 = st.executeQuery(
+                "SELECT YEAR(data) as urtea, MONTH(data) as hila, SUM(prezio_totala) as irabazia FROM Eskariak " +
+                "GROUP BY YEAR(data), MONTH(data) ORDER BY urtea, hila");
+            JsonArray hileko_irabaziak = new JsonArray();
+            String[] hilabeak = {"", "Urtarrila", "Otsaila", "Martxoa", "Apirila", "Maiatza", "Ekaina",
+                               "Uztaila", "Abuztua", "Iraila", "Urria", "Azaroa", "Abenduak"};
+            while (rs5.next()) {
+                JsonObject item = new JsonObject();
+                int hila = rs5.getInt("hila");
+                item.addProperty("urtea", rs5.getInt("urtea"));
+                item.addProperty("hila", hilabeak[hila]);
+                item.addProperty("irabazia", formatuEuroa(rs5.getDouble("irabazia")));
+                hileko_irabaziak.add(item);
+            }
+            estadistikak.add("hileko_irabaziak", hileko_irabaziak);
+
+            // Inoiz erosi gabeak
+            ResultSet rs6 = st.executeQuery(
+                "SELECT izena FROM Produktuak WHERE id NOT IN (SELECT DISTINCT produktu_id FROM Eskariak)");
+            JsonArray inoiz_erosi_gabeak = new JsonArray();
+            while (rs6.next()) {
+                inoiz_erosi_gabeak.add(rs6.getString("izena"));
+            }
+            estadistikak.add("inoiz_erosi_gabeak", inoiz_erosi_gabeak);
+
+            // Balio handikoak (> 500 EUR)
+            ResultSet rs7 = st.executeQuery(
+                "SELECT p.izena, SUM(COALESCE(e.prezio_totala, 0)) as balioa FROM Produktuak p " +
+                "LEFT JOIN Eskariak e ON p.id = e.produktu_id " +
+                "GROUP BY p.id HAVING balioa > 500 ORDER BY balioa DESC");
+            JsonArray balio_handikoak = new JsonArray();
+            while (rs7.next()) {
+                JsonObject item = new JsonObject();
+                item.addProperty("izena", rs7.getString("izena"));
+                item.addProperty("balioa", formatuEuroa(rs7.getDouble("balioa")));
+                balio_handikoak.add(item);
+            }
+            estadistikak.add("balio_handikoak", balio_handikoak);
+
+            // Fitxero idatzi
+            FileWriter fw = new FileWriter(rutaDirektorioa + "/estadistikak.json");
             Gson gson = new GsonBuilder().setPrettyPrinting().create();
-            Files.write(Paths.get(rutaDirektorioa + "/estatistikak.json"), gson.toJson(stats).getBytes());
+            fw.write(gson.toJson(estadistikak));
+            fw.close();
 
-            System.out.println("Estatistikak esportatuta!");
+            System.out.println("Estatistikak ongi esportatu dira");
+            con.close();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    
+    /**
+     * Euroan formatuatutako balioa bueltatzea
+     * @param baluoa baluoa
+     * @return formatuatutako euroa (XX.XXX,XXâ‚¬)
+     */
+    private static String formatuEuroa(double balioa) {
+        // Euroa formatu lokalizatuarekin
+        java.text.DecimalFormat df = new java.text.DecimalFormat("###,##0.00");
+        String formatuatua = df.format(balioa);
+        // Ordeztu puntua pista eta alderantziz
+        formatuatua = formatuatua.replace(",", "|").replace(".", ",").replace("|", ".");
+        return formatuatua + "â‚¬";
+    }
 }
+

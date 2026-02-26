@@ -1,3 +1,4 @@
+
 /**
  * Klase Nagusia - Produktuen Kudeaketarako Aplikazioa
  * 
@@ -17,7 +18,7 @@ import java.io.*;
 
 public class App {
     static String errepikatu;
-    static BufferedReader br;  
+    static BufferedReader br;
 
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
@@ -78,17 +79,14 @@ public class App {
 
                 case 7:
                     System.out.println("Zer esportatu nahi duzu?");
-                    System.out.println("1. Gehien saldutako produktuak");
-                    System.out.println("2. Estatistikak");
-                    System.out.println("3. Produktu guztien informazioa");
+                    System.out.println("1. Estatistikak");
+                    System.out.println("2. Produktu guztien informazioa");
                     int aukeraEsportatu = Integer.parseInt(br.readLine());
                     if (aukeraEsportatu == 1) {
-                        ProduktuakLogika.esportatuGehienSaldutakoak();
-                    } else if (aukeraEsportatu == 2) {
                         ProduktuakLogika.esportatuEstatistikak();
-                    } else if (aukeraEsportatu == 3) {
+                    } else if (aukeraEsportatu == 2) {
                         ProduktuakLogika.informazioaEsportatu();
-                    }
+                    } 
                     break;
 
                 case 8:
