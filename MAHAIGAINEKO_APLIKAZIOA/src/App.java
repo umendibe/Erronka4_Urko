@@ -1,8 +1,20 @@
 import java.io.*;
 
+/**
+ * Klase Nagusia - Produktuen Kudeaketarako Aplikazioa
+ * 
+ * Menu interaktibo bat ematen du, erabiltzaileari produktuak kudeatzeko aukera:
+ * - Produktuak gehitu edo eguneratu
+ * - CSV fitxategiak igo
+ * - Produktuak ezabatu edo bilatu
+ * - Datu-estatistikak esportatu
+ * - Zerrendata kategorien arabera
+ * 
+ * @author Urko Mendibe
+ */
 public class App {
     static String errepikatu;
-    static BufferedReader br;
+    static BufferedReader br;  
 
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));

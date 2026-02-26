@@ -1,3 +1,9 @@
+/*
+  Saskiaren Zerbitzua - saskiaZerbitzua.js
+  LocalStorage biltegiko kudeaketa, saskia-zenbakia, produktuak gehitu/kendu
+  Datu-persistentzia eta sinkronizazioa
+*/
+
 const karritoZenbaketa = document.getElementById('zenbaketa');
 const keyLocalStorage = "arropa";
 

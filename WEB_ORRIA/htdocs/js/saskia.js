@@ -1,3 +1,9 @@
+/*
+  Erosketak Saskia Kudeaketa - saskia.js
+  Saskia-edukia bistaratze, produktu-kantitatea, prezioa, eta errenkada-galtzea
+  LocalStorage-rekin datuak sinkronizatu
+*/
+
 const produktuKontainer = document.getElementById('produktuak');
 const kantitateaElement = document.getElementById('kantitatea');
 const prezioaElement = document.getElementById('prezioa');

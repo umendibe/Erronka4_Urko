@@ -1,3 +1,9 @@
+/*
+  Sarrera eta Erregistro Kudeaketa - login.js
+  Login eta erregistro formaren bidalketa, balide-azpiak, localStorage integrazioa
+  Erabiltzaile-daten balidazioa
+*/
+
 const bidaliLogin = document.getElementById('bidali_login');
 const bidaliErregistratu = document.getElementById('bidali_erregistratu');
 

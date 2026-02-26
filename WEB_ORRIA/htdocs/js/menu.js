@@ -1,3 +1,9 @@
+/*
+  Nabigazioaren Hamburger Menua - menu.js
+  Responsive menu-a mobil eta desktop baina, menu-a irekia/itxia
+  Mobile-friendly nabigazioa
+*/
+
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nabigazioa ul');

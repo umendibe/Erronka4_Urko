@@ -1,10 +1,16 @@
+/*
+  Produktuen Katalogo-Orriaren Estiloak
+  Hero sekzioa, produktu cards, kategorien iragazkia, eta bistaratze-moduak
+  Grid responsive eta hover-efektuekin
+*/
+
 body {
     font-family: 'Quicksand', 'Helvetica Neue', sans-serif;
     background-color: #f5f5f5;
     color: #333;
 }
 
-/* --- HERO SECTION --- */
+/* HEROI SEKZIOA */
 .hero-section {
     background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%);
     padding: 80px 20px;

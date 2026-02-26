@@ -1,3 +1,9 @@
+/*
+  Estatistiken Panelaren Estiloak
+  Informazio-kartela, chart-ak animazioak, eta dashboard-aren diseinua
+  Grid-ean egina eta hover-efektuekin datu-irudikapen hobea
+*/
+
 .estatistikak-container {
     max-width: 1200px;
     margin: 40px auto;

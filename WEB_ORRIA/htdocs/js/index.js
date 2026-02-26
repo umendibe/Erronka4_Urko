@@ -1,3 +1,9 @@
+/*
+  Deslizariaren Funtzionaltasuna - index.js
+  Orri nagusiaren deslizaria kudeaketa, slide-ak aurrera/atzera, puntuak
+  Automatikoa eta erabiltzaile-interaktiboa
+*/
+
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slide');
 const dotsContainer = document.querySelector('.slider-dots');

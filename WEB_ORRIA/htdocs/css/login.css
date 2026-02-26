@@ -1,3 +1,9 @@
+/*
+  Sarrera-Orriaren Estiloak
+  Gradiente atzean, login/erregistro formaren kontainerra, input-ak
+  Diya diseinua eta shadow-ak emaitza hobea lortzeko
+*/
+
 body {
     background: linear-gradient(135deg, #f5e6d3 0%, #e8d4b8 100%);
     min-height: 100vh;

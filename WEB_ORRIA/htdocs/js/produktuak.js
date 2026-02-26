@@ -1,4 +1,9 @@
-// Produktuak kargatu eta bistaratu
+/*
+  Produktuen Katalogoa Kudeaketa - produktuak.js
+  JSON produktu-datuen karga, kategorien iragazkia, bilaketa, eta bistaraketa
+  Dinamikoki kartela sorta eta interaktiboa
+*/
+
 let produktuGuztiak = [];
 let hautatutakoKategoriak = new Set(['denak']);
 

@@ -1,3 +1,19 @@
+/**
+ * Produktuaren Entitateak - Datuak:
+ * 
+ * Produktu bakoitzaren datuak gordetzeen dituena, esaterako:
+ * - ID: Produktuaren identifikazioa
+ * - izena: Produktuaren izena
+ * - deskribapena: Produktuaren deskribapena
+ * - prezioa: Produktuaren prezioa
+ * - stock: Stock-en kantitatea
+ * - kategoria: Produktuaren kategoria
+ * - sorkuntzaData: Sortutako data
+ * - img: Produktuaren irudiaren URL
+ * 
+ * 
+ * @author Urko Mendibe
+ */
 public class Produktuak {
     int ID;
     String izena;

@@ -1,3 +1,19 @@
+/**
+ * Produktuen Data-basearen Negozio-Logika
+ * 
+ * Kodearen funtzionalitate nagusia, zaharren artean:
+ * - MySQL datu-basea konektatu eta produktuak kudeatu
+ * - CRUD eragiketak (Create, Read, Update, Delete) produktuekin
+ * - JSON fitxategian produktuak esportatu
+ * - CSV fitxategiak datu-basera igo
+ * - Estatistikak kalkulatu eta metatatu
+ * - Kategoriak eta bilakatak
+ * 
+ * JDBC eta GSON liburutegiak erabiltzen du.
+ * 
+ * @author Urko Mendibe
+ */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -14,6 +30,7 @@ import java.sql.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+// Business logic class for product operations
 public class ProduktuakLogika {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static String DBurl = "jdbc:mysql://localhost:3306/erronka4";
