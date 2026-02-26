@@ -1,5 +1,3 @@
-import java.io.*;
-
 /**
  * Klase Nagusia - Produktuen Kudeaketarako Aplikazioa
  * 
@@ -11,7 +9,12 @@ import java.io.*;
  * - Zerrendata kategorien arabera
  * 
  * @author Urko Mendibe
+ * @version 1.0
+ * @since 2026
  */
+
+import java.io.*;
+
 public class App {
     static String errepikatu;
     static BufferedReader br;  
@@ -97,5 +100,4 @@ public class App {
             }
         }
     }
-
 }

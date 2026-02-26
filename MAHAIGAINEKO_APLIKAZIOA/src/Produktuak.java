@@ -1,8 +1,8 @@
 /**
- * Produktuaren Entitateak - Datuak:
+ * Produktuaren Entitatea - Datuak Gordetzea
  * 
- * Produktu bakoitzaren datuak gordetzeen dituena, esaterako:
- * - ID: Produktuaren identifikazioa
+ * Produktu bakoitzaren datuak gordetzeko klasea, esaterako:
+ * - ID: Produktuaren identifikazioa (bakarra)
  * - izena: Produktuaren izena
  * - deskribapena: Produktuaren deskribapena
  * - prezioa: Produktuaren prezioa
@@ -11,8 +11,11 @@
  * - sorkuntzaData: Sortutako data
  * - img: Produktuaren irudiaren URL
  * 
+ * Getters eta setters batekin datuak sartzeko eta biltegitik atzitzeko.
  * 
  * @author Urko Mendibe
+ * @version 1.0
+ * @since 2026
  */
 public class Produktuak {
     int ID;

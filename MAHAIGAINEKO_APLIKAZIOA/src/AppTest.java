@@ -1,7 +1,19 @@
-
-/**\n * Test Baten Fitxategia - Produktuen Kudeaketarako Aplikazioa\n * \n * JUnit 5 erabiltzen du, aplikazioaren funzionaltasuna test-atzeko:\n * - Produktuaren datuak balidezia (ID, izena, prezioa, stock, etc.)\n * - Hutsik dagoen datuak detektatzea\n * - Negatiboa balioak identifikatzea\n * - Menu aukera baliogabeak\n * - Kategorien balidezia\n * - Ekuazioen kalkuluak test-atzea\n * \n * Batxe bakoitzak batentzat egoera-kasuak test-atzen ditu.\n * \n * 
+/**
+ * Test Baten Fitxategia - Produktuen Kudeaketarako Aplikazioa
+ * 
+ * JUnit 5 erabiltzen du, aplikazioaren funzionaltasuna test-atzeko:
+ * - Produktuaren datuak balidezia (ID, izena, prezioa, stock, etc.)
+ * - Hutsik dagoen datuak detektatzea
+ * - Negatiboa balioak identifikatzea
+ * - Menu aukera baliogabeak
+ * - Kategorien balidezia
+ * - Ekuazioen kalkuluak test-atzea
+ * 
+ * Batxe bakoitzak batentzat egoera-kasuak test-atzen ditu.
+ * 
  * @author Urko Mendibe
- *  */
+ */
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
