@@ -10,8 +10,6 @@
  * - Zerrendata kategorien arabera
  * 
  * @author Urko Mendibe
- * @version 1.0
- * @since 2026
  */
 
 import java.io.*;
@@ -78,15 +76,7 @@ public class App {
                     break;
 
                 case 7:
-                    System.out.println("Zer esportatu nahi duzu?");
-                    System.out.println("1. Estatistikak");
-                    System.out.println("2. Produktu guztien informazioa");
-                    int aukeraEsportatu = Integer.parseInt(br.readLine());
-                    if (aukeraEsportatu == 1) {
-                        ProduktuakLogika.esportatuEstatistikak();
-                    } else if (aukeraEsportatu == 2) {
-                        ProduktuakLogika.informazioaEsportatu();
-                    } 
+                    ProduktuakLogika.informazioaEsportatu();
                     break;
 
                 case 8:
