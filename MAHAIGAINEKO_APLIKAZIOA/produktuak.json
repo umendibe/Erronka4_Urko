@@ -1,0 +1,202 @@
+[
+  {
+    "ID": 1011,
+    "izena": "Lacoste Sudadera",
+    "deskribapena": "Sudadera urdin iluna",
+    "prezioa": 30.0,
+    "stock": 110,
+    "kategoria": "1111",
+    "sorkuntzaData": "2024-05-23",
+    "img": "https://encrypted-tbn0.gstatic.com/shopping?q\u003dtbn:ANd9GcTt5v7dV06ER-KILfr1Vn-tgBbFRYjuw_Xo3tvPCXXQCs2cVbbuPenPTGVeHcLc-AsbaPY3VphULOKVW6q56clotHPMVmck"
+  },
+  {
+    "ID": 1012,
+    "izena": "Adidas Jertsea",
+    "deskribapena": "Jertse txuria",
+    "prezioa": 50.0,
+    "stock": 100,
+    "kategoria": "1111",
+    "sorkuntzaData": "2017-05-29",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcR9Gbyo4xoeAkhEjT2CISN4axsrgJ6CujlMGMvKknzcFY08TANx6xMxpb4tggDfRfyZetk_xrG0m5S7gkqu16fMW69tk3SNEDsbcn5lI129XZbp-ChFdp7VgWs"
+  },
+  {
+    "ID": 1013,
+    "izena": "Sudadera Blue Banana",
+    "deskribapena": "Sudadera txuria",
+    "prezioa": 55.0,
+    "stock": 80,
+    "kategoria": "1111",
+    "sorkuntzaData": "2020-02-17",
+    "img": "https://encrypted-tbn1.gstatic.com/shopping?q\u003dtbn:ANd9GcRP3ufNdrOsb0DFHfltm5-J3AAohHs1oL2luwoTL-S6odDHRyCZivQL78JKyalQdzYZpPEpLinDKjAop5-rwW9--iC6gpI9K10kQpA9vn_uhnWaMDnkixLQn2s"
+  },
+  {
+    "ID": 1014,
+    "izena": "Sudadera Nude Project",
+    "deskribapena": "Sudadera beltza",
+    "prezioa": 90.0,
+    "stock": 120,
+    "kategoria": "1111",
+    "sorkuntzaData": "2022-05-02",
+    "img": "https://encrypted-tbn1.gstatic.com/shopping?q\u003dtbn:ANd9GcRtZGdage_psoSk072M-D3V1rZBn7QEBbcIdpXQR4WiRa6tx1CyV-Au_YbYzIVXUb0EXhsgGG3nPYyMDrHr3TL-11NT69qaXBb9Wdz0mTLdD8ziz-34_BZm"
+  },
+  {
+    "ID": 2011,
+    "izena": "Alkandora Urdina",
+    "deskribapena": "Alkandora urdina",
+    "prezioa": 8.0,
+    "stock": 50,
+    "kategoria": "2222",
+    "sorkuntzaData": "2015-09-08",
+    "img": "https://encrypted-tbn1.gstatic.com/shopping?q\u003dtbn:ANd9GcQdpDNfSjmbZ3vbfXpFKXoTJ77k5zBzFBRIaigiB1ghgtXv06Fs9c-fT9iO1yxyZKp7p7QD34XdbL270KYIuL68K3zwOb5k-glAP6NWQtGd1tYTTsBY9bMuX1iJ7IRf0rCCDk5iVC81fFc"
+  },
+  {
+    "ID": 2012,
+    "izena": "Laukidun Alkandora",
+    "deskribapena": "Alkandora beltza eta berdea",
+    "prezioa": 25.0,
+    "stock": 60,
+    "kategoria": "2222",
+    "sorkuntzaData": "2025-09-09",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcT_wvvRpHjiplKcCvN9j2VUQ5DH087DhAcWPDXRSpYRyINFDo8mm1OWMTBV4pSGF6E80X6yiFyvBp_BkUqUM0uKmVyrpjWhXFf3y1ykzD-RL4Q9hnwhB7_CtQ"
+  },
+  {
+    "ID": 2013,
+    "izena": "Alkandora Arrosa",
+    "deskribapena": "Alkandora Arrosa",
+    "prezioa": 25.0,
+    "stock": 55,
+    "kategoria": "2222",
+    "sorkuntzaData": "2024-04-04",
+    "img": "https://encrypted-tbn3.gstatic.com/shopping?q\u003dtbn:ANd9GcR34mLoa8i5_yI2da-Ea87MTyjImECBSuCNEtSc-MO8J2VNWH9S8QwUHP5h0vw3ZiJmr3lf6rzQEd-aZJATCz5hHtfQ6TdMtGGRVo-FCCCpVcCodzk0HdXOML4"
+  },
+  {
+    "ID": 2014,
+    "izena": "Alkandora Beltza",
+    "deskribapena": "Alkandora Beltza",
+    "prezioa": 25.0,
+    "stock": 70,
+    "kategoria": "2222",
+    "sorkuntzaData": "2019-12-03",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcR8apn-r0y7lXk_mPfYZuN2zl7ob9PW-_PsFJffmeVzkgXBdcZ_hHYJ1Vvt9bc8V6kT0DJq4xKQWNhzFBaxs3ot4r7JIQdCaK2OLnOYRJZRMm2AJLUwMO5z0ks"
+  },
+  {
+    "ID": 3011,
+    "izena": "Adidas Kamiseta",
+    "deskribapena": "Kamiseta urdina",
+    "prezioa": 15.0,
+    "stock": 300,
+    "kategoria": "3333",
+    "sorkuntzaData": "2023-11-20",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcT3LteIVTpTIy20E4jBJz7ww71qiVTyi-9ceT-qASCW6-RxEEZgtndTDQAbK-nZT3IvM2O73lFG2RTkWnlY26jEbq_4R7k_cpAIPdlp7GR_4gF6oBEc-9Uh2NY"
+  },
+  {
+    "ID": 3012,
+    "izena": "Adidas Kamiseta",
+    "deskribapena": "Kamiseta urdin argia",
+    "prezioa": 15.0,
+    "stock": 350,
+    "kategoria": "3333",
+    "sorkuntzaData": "2023-11-29",
+    "img": "https://encrypted-tbn3.gstatic.com/shopping?q\u003dtbn:ANd9GcQa1W_n6uUnXFbatUWp615yYhmPltsh7TGeIXIMj_x5z1xo96xhvO89RbGaInomVtfenvDrmSuEYL7fvbnj0lq9ZAnfXgBy"
+  },
+  {
+    "ID": 3013,
+    "izena": "Adidas Kamiseta",
+    "deskribapena": "Kamiseta beltza",
+    "prezioa": 15.0,
+    "stock": 400,
+    "kategoria": "3333",
+    "sorkuntzaData": "2023-11-29",
+    "img": "https://encrypted-tbn1.gstatic.com/shopping?q\u003dtbn:ANd9GcQP-ll4rTQzbZ6t-XswE2RGmfZ6e1YH_1GQjKVcv6zTMGqHLIjbF9cw4KZLww_DAgZ3R_5moKNfFhh70H_UQObLawHhPUjhqjeFeO2F8hcHxVjTX31n4trl4w"
+  },
+  {
+    "ID": 3014,
+    "izena": "Adidas Kamiseta",
+    "deskribapena": "Kamiseta gorria",
+    "prezioa": 15.0,
+    "stock": 300,
+    "kategoria": "3333",
+    "sorkuntzaData": "2023-11-29",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcRyEUT1CzjPxPQUWQ1YYa0qRf219VYdfWWLwH6dD-lROLWcuV1BgGHvdLrB2IHJhqVX6eVNXEYHNv36ZQHwPaP52OGhitufaB2J8arGMuTwsr8I-sqe4uGqKg"
+  },
+  {
+    "ID": 4011,
+    "izena": "Galtza Kargoak",
+    "deskribapena": "Kargo grisak",
+    "prezioa": 75.0,
+    "stock": 110,
+    "kategoria": "4444",
+    "sorkuntzaData": "2025-12-13",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcRY5ALzFvFX3Qln1D3dVs_krm4IDvXSxeNxzElHLhvo1vqCloDvGH6RxOMarx64dbJyrxG06gPgxjrk8wVP3D-VqG1oBcogp1Y3pxN574eex-hG-o4IeJ0NBfg78ypW7biEnEv2Tg"
+  },
+  {
+    "ID": 4012,
+    "izena": "Chandal Osoa",
+    "deskribapena": "Chandal grisa",
+    "prezioa": 60.0,
+    "stock": 120,
+    "kategoria": "4444",
+    "sorkuntzaData": "2025-11-12",
+    "img": "https://encrypted-tbn0.gstatic.com/shopping?q\u003dtbn:ANd9GcSeL7ISKwUjKtiIgELtRKUwHASZc5E1t1SRpwTulkgQ3RcN6_qZJtaemfExGWODav7BZzjJBeYWE8LcQAeWdKXrGVGip575wQ"
+  },
+  {
+    "ID": 4013,
+    "izena": "Baquero Urdinak",
+    "deskribapena": "Baquero urdinak",
+    "prezioa": 20.0,
+    "stock": 200,
+    "kategoria": "4444",
+    "sorkuntzaData": "2025-04-25",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcR7X_M1PBVNWb3BEarnCWf7tp0shZ2JT3woMhi1ioCHgcaZt05jrdiC7PSfu72suhDiBw8o1dmXGAxELZ724uC7HFl2Ta99NQBPdvPT86LdNY3YN0d1p_UxHw"
+  },
+  {
+    "ID": 4014,
+    "izena": "Baquero Beltzak",
+    "deskribapena": "Baquero Beltzak",
+    "prezioa": 30.0,
+    "stock": 30,
+    "kategoria": "4444",
+    "sorkuntzaData": "2025-03-10",
+    "img": "https://encrypted-tbn3.gstatic.com/shopping?q\u003dtbn:ANd9GcTl_sV7yOiZclALHWx4TpHtQ_8TUAxQELLwZbVoxRqzDawcIAwSSZ1csMWZ7qHGEiZRPP_-zH_nxKVzqAgoGEIPRm_K1XBwKVsGiEXOq4US5PtsJCNX0UCkNQ"
+  },
+  {
+    "ID": 5011,
+    "izena": "Nike Air Max Plus",
+    "deskribapena": "Air Max Beltzak",
+    "prezioa": 190.0,
+    "stock": 150,
+    "kategoria": "5555",
+    "sorkuntzaData": "2026-02-25",
+    "img": "https://encrypted-tbn1.gstatic.com/shopping?q\u003dtbn:ANd9GcR78liEtGOxFkC6fUGb6oyITk0yN7peThyxwBSbagq1ZONJADFQZZbynOyI3ImL9AqNpBKgrC0p9EW1yZ4M7fFxO1jV8enn8MsI3Yw8ccfTI6CkQX9bCRnVxIk"
+  },
+  {
+    "ID": 5012,
+    "izena": "Nike Shox TL",
+    "deskribapena": "Nike Shox Txuriak",
+    "prezioa": 140.0,
+    "stock": 200,
+    "kategoria": "5555",
+    "sorkuntzaData": "2018-09-10",
+    "img": "https://encrypted-tbn3.gstatic.com/shopping?q\u003dtbn:ANd9GcTiEtSW0bhGMCmN_3QwV6o8_8zxieDtRJ_IcwrKowjJuWgyiIe6gZbYzu-PctMqsIWvKU_WQf_F4vmX0k4xabYt4EPrVnB94anT3AHFrJctU4Rcgsv1CM1pcg"
+  },
+  {
+    "ID": 5013,
+    "izena": "Nike Air Max 90",
+    "deskribapena": "Air Max Beltzak",
+    "prezioa": 150.0,
+    "stock": 250,
+    "kategoria": "5555",
+    "sorkuntzaData": "2015-01-09",
+    "img": "https://encrypted-tbn2.gstatic.com/shopping?q\u003dtbn:ANd9GcT8cXTCW5JTQwEeifQnLYN7T5ieWgzxyPIAZhoY2GnERWqkdnNeS0d0OOUe6RpxJPR33tEwHJT6LUPvcDLRE6th0SE3il6Ed_0mPYYv1TkzoW9gqaVEYhZGaA"
+  },
+  {
+    "ID": 5014,
+    "izena": "Nike Dunk Low",
+    "deskribapena": "Dunk Low Txuriak eta Beltzak",
+    "prezioa": 95.0,
+    "stock": 200,
+    "kategoria": "5555",
+    "sorkuntzaData": "2020-05-15",
+    "img": "https://encrypted-tbn0.gstatic.com/shopping?q\u003dtbn:ANd9GcQH8rYcROH9BbXbsKoWBsqBOauS12hhKl2GKkVU4VPDY4XbM-zC0K9NHf2wtlaR3XLuo4Yf-ghkVTV-MsML3BBVwMEMl-Jqp-vvXZC-IWgbvGxevWksw0gfAxY"
+  }
+]
